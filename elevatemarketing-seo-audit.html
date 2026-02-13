@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Audit Report - Elevate Internet Marketing | February 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --primary: #0f172a;
+    --accent: #f97316;
+    --accent-light: #fb923c;
+    --accent-glow: rgba(249,115,22,0.15);
+    --blue: #1e3a5f;
+    --blue-light: #1e293b;
+    --teal: #06b6d4;
+    --teal-dark: #0891b2;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --orange: #f97316;
+    --surface: #ffffff;
+    --surface-alt: #f8fafc;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --text-light: #475569;
+    --text-lighter: #94a3b8;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+    --shadow-xl: 0 24px 60px rgba(0,0,0,0.15);
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--surface-alt);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: url('https://elevatemarketing.co.za/wp-content/uploads/2019/03/elevate-home-v2-banner-image.jpg') center center / cover no-repeat;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,58,95,0.87) 50%, rgba(30,41,59,0.90) 100%);
+    z-index: 1;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(15,23,42,0.97), transparent);
+    z-index: 1;
+  }
+
+  .hero-top-bar {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-logo {
+    height: 48px;
+    width: auto;
+    opacity: 0.95;
+  }
+
+  .hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 48px 40px 100px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent-light), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    line-height: 1.7;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-meta-item .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+  }
+
+  .hero-meta-item .value {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ============ SCORE STRIP ============ */
+  .score-strip {
+    max-width: 1000px;
+    margin: -50px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .score-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .score-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .score-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .score-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 auto 12px;
+    position: relative;
+  }
+
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    padding: 3px;
+    background: conic-gradient(var(--score-color) var(--score-pct), #e2e8f0 var(--score-pct));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+  }
+
+  .score-red { --score-color: var(--red); color: var(--red); }
+  .score-orange { --score-color: var(--orange); color: var(--orange); }
+  .score-yellow { --score-color: var(--yellow); color: var(--yellow); }
+  .score-green { --score-color: var(--green); color: var(--green); }
+
+  .score-card .card-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .score-card .card-desc {
+    font-size: 12px;
+    color: var(--text-lighter);
+  }
+
+  /* ============ NAV ============ */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 20px;
+  }
+
+  .nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 8px 0;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover { background: var(--surface-alt); color: var(--text); }
+  .nav-link.active { background: var(--primary); color: white; }
+
+  /* ============ SECTIONS ============ */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 60px 0; }
+
+  .section-header { margin-bottom: 40px; }
+
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--text-light);
+    max-width: 650px;
+  }
+
+  /* ============ WHY SEO ============ */
+  .why-seo { background: white; border-bottom: 1px solid var(--border); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-2px); }
+
+  .stat-card .stat-number {
+    font-size: 40px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .stat-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+  .why-text {
+    margin-top: 32px;
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 800px;
+  }
+
+  .why-text strong { color: var(--text); }
+
+  .callout-box {
+    margin-top: 28px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(6,182,212,0.06));
+    border: 1px solid rgba(249,115,22,0.15);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .callout-box p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 500;
+  }
+
+  /* ============ ISSUE CARDS ============ */
+  .issue-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .issue-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+
+  .issue-card:hover { box-shadow: var(--shadow-md); }
+
+  .issue-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .issue-header:hover { background: var(--surface-alt); }
+
+  .impact-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .impact-critical { background: rgba(239,68,68,0.1); color: var(--red); }
+  .impact-high { background: rgba(249,115,22,0.1); color: var(--orange); }
+  .impact-medium { background: rgba(245,158,11,0.15); color: #b45309; }
+  .impact-low { background: rgba(16,185,129,0.1); color: #059669; }
+
+  .issue-title { font-size: 15px; font-weight: 600; flex: 1; }
+
+  .issue-chevron {
+    width: 20px; height: 20px;
+    color: var(--text-lighter);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .issue-card.open .issue-chevron { transform: rotate(180deg); }
+
+  .issue-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .issue-card.open .issue-body { max-height: 800px; }
+
+  .issue-content {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .issue-detail { margin-bottom: 16px; }
+  .issue-detail:last-child { margin-bottom: 0; }
+
+  .issue-detail .detail-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 6px;
+  }
+
+  .issue-detail p, .issue-detail li {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .issue-detail ul { list-style: none; padding: 0; }
+
+  .issue-detail ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .issue-detail ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .fix-box {
+    background: rgba(6,182,212,0.06);
+    border: 1px solid rgba(6,182,212,0.15);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .fix-box p, .fix-box li { color: var(--blue) !important; font-weight: 500; }
+
+  /* ============ TABLE ============ */
+  .audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+
+  .audit-table th {
+    background: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .audit-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .audit-table tr:last-child td { border-bottom: none; }
+  .audit-table tr:hover td { background: var(--surface-alt); }
+
+  .status-ok { color: var(--green); font-weight: 600; }
+  .status-warn { color: var(--orange); font-weight: 600; }
+  .status-fail { color: var(--red); font-weight: 600; }
+
+  /* ============ TITLE COMPARISON ============ */
+  .comparison-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .comparison-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+  }
+
+  .comparison-current, .comparison-recommended {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .comparison-current {
+    background: rgba(239,68,68,0.06);
+    border: 1px solid rgba(239,68,68,0.15);
+    color: var(--red);
+  }
+
+  .comparison-recommended {
+    background: rgba(16,185,129,0.06);
+    border: 1px solid rgba(16,185,129,0.2);
+    color: #047857;
+  }
+
+  .comp-header {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 8px;
+  }
+
+  /* ============ CANNIBALIZATION ============ */
+  .cannibal-grid { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+
+  .cannibal-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cannibal-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--red);
+  }
+
+  .cannibal-card .target { font-size: 12px; color: var(--text-lighter); margin-bottom: 12px; }
+
+  .cannibal-urls {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cannibal-url {
+    font-size: 13px;
+    padding: 8px 12px;
+    background: var(--surface-alt);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    word-break: break-all;
+  }
+
+  .cannibal-fix {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(6,182,212,0.06);
+    border: 1px solid rgba(6,182,212,0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ============ CONTENT OPPORTUNITIES ============ */
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .opp-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .opp-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+  .opp-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .opp-icon.blog { background: rgba(239,68,68,0.1); }
+  .opp-icon.cases { background: rgba(6,182,212,0.1); }
+  .opp-icon.local { background: rgba(16,185,129,0.1); }
+  .opp-icon.compare { background: rgba(245,158,11,0.15); }
+  .opp-icon.pillar { background: rgba(15,23,42,0.08); }
+  .opp-icon.tools { background: rgba(249,115,22,0.1); }
+
+  .opp-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .opp-card p { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 12px; }
+
+  .keyword-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .keyword-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* ============ ROADMAP ============ */
+  .roadmap { display: flex; flex-direction: column; gap: 24px; }
+
+  .phase {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-number {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .phase-1 .phase-number { background: var(--red); }
+  .phase-2 .phase-number { background: var(--orange); }
+  .phase-3 .phase-number { background: var(--teal); }
+  .phase-4 .phase-number { background: var(--green); }
+
+  .phase-info h3 { font-size: 17px; font-weight: 700; }
+  .phase-info .phase-timeline { font-size: 13px; color: var(--text-lighter); font-weight: 500; }
+
+  .phase-items { padding: 20px 24px; }
+
+  .phase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .phase-item:last-child { border-bottom: none; }
+
+  .phase-item .check {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .phase-item.quick-win .check { background: rgba(16,185,129,0.1); border-color: var(--green); }
+
+  .quick-badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    background: rgba(16,185,129,0.1);
+    color: var(--green);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ============ SCHEMA ============ */
+  .schema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .schema-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .schema-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .schema-item:last-child { border-bottom: none; }
+  .schema-check { color: var(--green); font-weight: bold; }
+  .schema-cross { color: var(--red); font-weight: bold; }
+
+  /* ============ EEAT ============ */
+  .eeat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .eeat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .eeat-card .eeat-icon { font-size: 28px; margin-bottom: 12px; }
+  .eeat-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+
+  .eeat-card .eeat-status {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .eeat-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* ============ CTA / FOOTER ============ */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--blue));
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .cta-section h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+
+  .cta-section p {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 550px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(249,115,22,0.3);
+  }
+
+  .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); }
+
+  .footer {
+    background: var(--primary);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 13px;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .hero-top-bar { padding: 20px 20px 0; }
+    .hero-inner { padding: 32px 20px 80px; }
+    .hero-logo { height: 40px; }
+    .hero-meta { gap: 20px; }
+    section { padding: 40px 0; }
+    .section-header h2 { font-size: 24px; }
+    .comparison-row { grid-template-columns: 1fr; gap: 8px; }
+    .comparison-label { display: none; }
+    .schema-grid { grid-template-columns: 1fr; }
+    .score-cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .score-cards { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    .nav-bar { display: none; }
+    .issue-body { max-height: none !important; }
+    .hero-inner { padding: 30px 40px 60px; }
+    section { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-top-bar">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      SEO AUDIT REPORT
+    </div>
+    <img src="https://elevatemarketing.co.za/wp-content/uploads/2019/05/21106396_1756340687726649_6135303089210773863_n-2.png" alt="Elevate Internet Marketing Logo" class="hero-logo">
+  </div>
+  <div class="hero-inner">
+    <h1>elevatemarketing.co.za<br><span>SEO Performance Audit</span></h1>
+    <p class="hero-sub">A comprehensive technical and on-page SEO analysis with prioritized recommendations to strengthen your organic presence and practice what you preach.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Prepared For</span>
+        <span class="value">Elevate Internet Marketing</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Date</span>
+        <span class="value">February 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Pages Analyzed</span>
+        <span class="value">27 pages + 48 blog posts</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Issues Found</span>
+        <span class="value">21 issues across 5 categories</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCORE STRIP ============ -->
+<div class="score-strip">
+  <div class="score-cards">
+    <div class="score-card">
+      <div class="score-circle score-yellow" style="--score-pct: 60%">60</div>
+      <div class="card-label">Technical SEO</div>
+      <div class="card-desc">Needs attention</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-red" style="--score-pct: 30%">30</div>
+      <div class="card-label">On-Page SEO</div>
+      <div class="card-desc">Significant gaps</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-red" style="--score-pct: 20%">20</div>
+      <div class="card-label">Content Freshness</div>
+      <div class="card-desc">Severely outdated</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-orange" style="--score-pct: 35%">35</div>
+      <div class="card-label">Trust & Authority</div>
+      <div class="card-desc">Weak signals</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="#why-seo" class="nav-link">Why This Matters</a>
+    <a href="#technical" class="nav-link">Technical</a>
+    <a href="#on-page" class="nav-link">On-Page</a>
+    <a href="#cannibalization" class="nav-link">Cannibalization</a>
+    <a href="#titles" class="nav-link">Title Tags</a>
+    <a href="#content" class="nav-link">Content</a>
+    <a href="#schema" class="nav-link">Schema</a>
+    <a href="#trust" class="nav-link">E-E-A-T</a>
+    <a href="#roadmap" class="nav-link">Action Plan</a>
+  </div>
+</nav>
+
+<!-- ============ WHY SEO ============ -->
+<section id="why-seo" class="why-seo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Why This Audit Matters</h2>
+      <p>As a digital marketing agency, your own website is the most important case study you'll ever have. It's the first thing prospects evaluate before trusting you with their marketing.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <h4>Pages Indexed by Google</h4>
+        <p>Despite having 75+ URLs in your sitemap, only 3 pages appear in Google search results. The vast majority of your content is either not being found or not being deemed worthy of indexing.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8 yrs</div>
+        <h4>Since Last Blog Post</h4>
+        <p>Your most recent blog post is from May 2018. Google heavily favours fresh, regularly updated content. An abandoned blog signals to both Google and prospects that the site may be inactive.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6+</div>
+        <h4>Duplicate Topic Pages</h4>
+        <p>Multiple pages compete for the same keywords (SEO, Google Ads, PPC). This keyword cannibalization forces Google to choose between your own pages, diluting authority across all of them.</p>
+      </div>
+    </div>
+
+    <div class="why-text">
+      <p>You already know why SEO matters -- you sell it as a service. But here's the uncomfortable truth: <strong>your website currently undermines the expertise you're selling.</strong> A prospect researching "digital marketing agency Pretoria" or "lead generation South Africa" who lands on your site will see outdated blog posts from 2010-2018, duplicate service pages, and missing meta descriptions.</p>
+      <p style="margin-top: 16px;"><strong>Your website should be your best-performing sales asset and your most compelling case study.</strong> If you can't rank your own site, why would a prospect trust you to rank theirs? The good news: with your existing marketing knowledge, these fixes will be faster for you than for most businesses. The infrastructure exists -- it just needs to be cleaned up, consolidated, and refreshed.</p>
+    </div>
+
+    <div class="callout-box">
+      <p>Think of it this way: every day your site isn't optimized, potential clients are finding your competitors instead. For a marketing agency, <strong>your own organic rankings are the most powerful form of social proof you can have.</strong></p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ TECHNICAL SEO ============ -->
+<section id="technical">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Technical SEO</h2>
+      <p>The foundation that determines whether Google can properly crawl, index, and rank your pages.</p>
+    </div>
+
+    <table class="audit-table">
+      <thead>
+        <tr><th>Check</th><th>Status</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTTPS / SSL</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>SSL certificate active across the site</td>
+        </tr>
+        <tr>
+          <td>Robots.txt</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Open to crawlers, sitemap index referenced</td>
+        </tr>
+        <tr>
+          <td>XML Sitemap</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>5 child sitemaps exist but lastmod dates are severely outdated (most from 2017-2018)</td>
+        </tr>
+        <tr>
+          <td>Canonical Tags</td>
+          <td><span class="status-fail">Fail</span></td>
+          <td>No canonical tags detected on pages -- critical for duplicate content issues</td>
+        </tr>
+        <tr>
+          <td>Mobile Responsive</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Divi theme provides responsive design</td>
+        </tr>
+        <tr>
+          <td>Indexation</td>
+          <td><span class="status-fail">Fail</span></td>
+          <td>Only 3 of 75+ pages appearing in Google index</td>
+        </tr>
+        <tr>
+          <td>Duplicate Pages</td>
+          <td><span class="status-fail">Fail</span></td>
+          <td>Multiple pages targeting identical keywords (SEO, Google Ads, PPC) -- see cannibalization section</td>
+        </tr>
+        <tr>
+          <td>Thank You Page</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>/thank-you/ page is indexable -- should be noindexed</td>
+        </tr>
+        <tr>
+          <td>Sitemap Freshness</td>
+          <td><span class="status-fail">Fail</span></td>
+          <td>Post sitemap last updated May 2018, category sitemap 2018, tags sitemap Dec 2017</td>
+        </tr>
+        <tr>
+          <td>Duplicate Home Page</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>Both / and /home/ and /home-new/ exist as separate pages -- should redirect to one canonical URL</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ ON-PAGE SEO ============ -->
+<section id="on-page">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>On-Page SEO Issues</h2>
+      <p>The elements on each page that tell Google what it's about and convince searchers to click through from results.</p>
+    </div>
+
+    <div class="issue-list">
+
+      <div class="issue-card open">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Missing Meta Descriptions Across All Pages</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>No meta description tag was found on the homepage, SEO page, Google Ads page, Lead Generation page, Social Media page, About page, or Contact page. The homepage has one set in a meta tag but most service pages do not.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Why It Matters</div>
+              <p>Meta descriptions are your ad copy in search results. Without them, Google auto-generates snippets that are often uncompelling. A well-crafted description can increase CTR by 5-10% -- critical for a marketing agency trying to demonstrate expertise.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Write unique, compelling meta descriptions (150-160 characters) for every active page using Yoast SEO. Each should include the primary keyword, a value proposition, and a call to action.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Title Tags Too Long and Brand-Heavy</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>All titles follow the pattern "[Service] | Elevate Internet Marketing - Results Driven Marketing". This is 60-80+ characters, causing truncation in SERPs. The brand suffix alone is 50 characters, leaving almost no room for keywords.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Shorten titles to under 60 characters. Put the primary keyword first, use a concise brand suffix. Example: "Lead Generation Services Pretoria | Elevate Marketing" instead of "Lead Generation | Elevate Internet Marketing - Results Driven Marketing".</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Blog Completely Abandoned (Last Post: 2018)</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>48 blog posts exist, but the most recent is from May 2018. Most posts date to 2010-2012. Topics reference outdated SEO practices and the digital landscape has changed fundamentally since then (mobile-first indexing, Core Web Vitals, AI, E-E-A-T).</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Why It Matters</div>
+              <p>An abandoned blog with 8-year-old content actively hurts credibility. Prospects will question whether you're still in business. Google also favours sites that demonstrate ongoing freshness and expertise.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <ul>
+                  <li>Either remove/noindex the outdated blog posts, or update the best-performing ones with current information</li>
+                  <li>Commit to publishing 2-4 new, high-quality posts per month</li>
+                  <li>Focus on topics that demonstrate current expertise: AI in marketing, GA4, first-party data, etc.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-high">High</span>
+          <span class="issue-title">Missing Image Alt Text Site-Wide</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>Service icons, team images, and feature graphics across the site lack descriptive alt text. At least 9+ images on the homepage alone have no alt attributes.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Audit every image and add descriptive, keyword-relevant alt text. For service icons, describe the service. For decorative images, use empty alt="" attributes. This also improves accessibility compliance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-high">High</span>
+          <span class="issue-title">Missing Open Graph & Social Meta Tags</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>No Open Graph or Twitter Card meta tags detected. When pages are shared on social media, they appear without branded preview images or descriptions -- especially problematic for a social media marketing agency.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Configure Yoast SEO's social settings. Create branded OG images (1200x630px) for key pages. This is particularly important since you offer social media marketing as a service.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-medium">Medium</span>
+          <span class="issue-title">Outdated Copyright and Design Elements</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>Copyright notice reads "2021". The Google Ads page still references "Google Adwords" (rebranded to Google Ads in 2018). These small signals tell both Google and visitors the site isn't maintained.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Update copyright to 2026. Replace all "Adwords" references with "Google Ads". Use dynamic copyright year in the theme footer to prevent this from going stale again.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ KEYWORD CANNIBALIZATION ============ -->
+<section id="cannibalization">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Keyword Cannibalization</h2>
+      <p>Multiple pages on your site compete for the same keywords. This confuses Google about which page to rank and dilutes the authority of all of them. This is your single biggest structural SEO problem.</p>
+    </div>
+
+    <div class="cannibal-grid">
+      <div class="cannibal-card">
+        <h4>SEO / Search Engine Optimization</h4>
+        <div class="target">At least 4 pages compete for this keyword cluster</div>
+        <div class="cannibal-urls">
+          <div class="cannibal-url">/seo/</div>
+          <div class="cannibal-url">/search-engine-optimization/</div>
+          <div class="cannibal-url">/search-engine-marketing/</div>
+          <div class="cannibal-url">+ 20 blog posts about SEO services</div>
+        </div>
+        <div class="cannibal-fix">Consolidate into one authoritative /seo/ page. 301 redirect the others. Update internal links to point to the canonical page.</div>
+      </div>
+
+      <div class="cannibal-card">
+        <h4>Google Ads / PPC Advertising</h4>
+        <div class="target">At least 4 pages compete for this keyword cluster</div>
+        <div class="cannibal-urls">
+          <div class="cannibal-url">/google-ads/</div>
+          <div class="cannibal-url">/google-adwords/</div>
+          <div class="cannibal-url">/ppc-adwords/</div>
+          <div class="cannibal-url">/ppc-adwords-management/</div>
+        </div>
+        <div class="cannibal-fix">Choose /google-ads/ as the canonical page. 301 redirect all others. Remove outdated "Adwords" terminology throughout.</div>
+      </div>
+
+      <div class="cannibal-card">
+        <h4>Lead Generation / Sales Leads</h4>
+        <div class="target">At least 3 pages compete for this keyword cluster</div>
+        <div class="cannibal-urls">
+          <div class="cannibal-url">/lead-generation/</div>
+          <div class="cannibal-url">/leads/</div>
+          <div class="cannibal-url">/small-business-sales-leads/</div>
+        </div>
+        <div class="cannibal-fix">Consolidate into /lead-generation/ as the primary page. 301 redirect the others. Expand the surviving page with deeper content.</div>
+      </div>
+
+      <div class="cannibal-card">
+        <h4>Homepage Duplicates</h4>
+        <div class="target">3 separate homepage versions exist</div>
+        <div class="cannibal-urls">
+          <div class="cannibal-url">/ (root)</div>
+          <div class="cannibal-url">/home/</div>
+          <div class="cannibal-url">/home-new/</div>
+        </div>
+        <div class="cannibal-fix">Ensure / is the canonical homepage. 301 redirect /home/ and /home-new/ to the root URL.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ TITLE TAGS ============ -->
+<section id="titles">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Title Tag Recommendations</h2>
+      <p>Current titles are too long and waste precious character space on brand repetition. Here's a side-by-side comparison.</p>
+    </div>
+
+    <div class="comparison-grid">
+      <div>
+        <div style="display: grid; grid-template-columns: 120px 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div></div>
+          <div class="comp-header">Current (Truncated in SERP)</div>
+          <div class="comp-header">Recommended</div>
+        </div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Homepage</div>
+        <div class="comparison-current">Elevate Internet Marketing | Digital Marketing</div>
+        <div class="comparison-recommended">Digital Marketing Agency Pretoria | Elevate Marketing</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">SEO</div>
+        <div class="comparison-current">SEO | Elevate Internet Marketing - Results Driven...</div>
+        <div class="comparison-recommended">SEO Services South Africa - Proven Results | Elevate</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Google Ads</div>
+        <div class="comparison-current">Google Ads | Elevate Internet Marketing - Results...</div>
+        <div class="comparison-recommended">Google Ads Management - 30-Day Lead Guarantee | Elevate</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Lead Gen</div>
+        <div class="comparison-current">Lead Generation | Elevate Internet Marketing - Res...</div>
+        <div class="comparison-recommended">Lead Generation Services - Qualified Leads Fast | Elevate</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Social</div>
+        <div class="comparison-current">Social Media Marketing | Elevate Internet Marketing...</div>
+        <div class="comparison-recommended">Social Media Marketing Packages from R3,500 | Elevate</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Web Dev</div>
+        <div class="comparison-current">Website Development | Website Design</div>
+        <div class="comparison-recommended">Website Design & Development Pretoria | Elevate Marketing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ CONTENT ============ -->
+<section id="content">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Content Opportunities</h2>
+      <p>Your site has quantity (75+ URLs) but lacks quality and freshness. The biggest opportunity is transforming existing thin pages into authoritative resources and adding modern content.</p>
+    </div>
+
+    <div class="opportunity-grid">
+      <div class="opp-card">
+        <div class="opp-icon blog">&#9998;</div>
+        <h4>Revive the Blog (2026 Content)</h4>
+        <p>48 posts exist but all are from 2010-2018. Update the best performers with current information and start publishing fresh content on modern topics.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">AI marketing tools 2026</span>
+          <span class="keyword-tag">GA4 setup guide</span>
+          <span class="keyword-tag">first-party data strategy</span>
+          <span class="keyword-tag">Performance Max campaigns</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon cases">&#9733;</div>
+        <h4>Case Studies with Real Results</h4>
+        <p>No case studies exist. For a marketing agency, case studies are the most powerful content you can create. Show leads generated, ROAS achieved, rankings gained.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">marketing case study SA</span>
+          <span class="keyword-tag">lead gen results</span>
+          <span class="keyword-tag">Google Ads ROI proof</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon local">&#9873;</div>
+        <h4>Location-Specific Service Pages</h4>
+        <p>You serve the Western Cape but have no location-targeted pages. Create city-specific landing pages for the areas you serve.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">digital marketing Cape Town</span>
+          <span class="keyword-tag">SEO Pretoria</span>
+          <span class="keyword-tag">Google Ads Johannesburg</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon pillar">&#128218;</div>
+        <h4>Pillar Pages per Service</h4>
+        <p>Service pages are thin (primarily lead capture forms). Build comprehensive, authoritative guides for each service that demonstrate your expertise.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">complete SEO guide SA</span>
+          <span class="keyword-tag">Google Ads for beginners</span>
+          <span class="keyword-tag">social media strategy</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon compare">&#9878;</div>
+        <h4>Industry Comparison Content</h4>
+        <p>Create pages comparing services, tools, and approaches. This captures high-intent bottom-of-funnel traffic from prospects actively evaluating options.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">SEO vs Google Ads</span>
+          <span class="keyword-tag">best marketing agency SA</span>
+          <span class="keyword-tag">in-house vs agency</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon tools">&#9881;</div>
+        <h4>Free Tools & Calculators</h4>
+        <p>Build simple interactive tools (ROI calculator, ad spend estimator) that generate leads and earn backlinks naturally.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">Google Ads ROI calculator</span>
+          <span class="keyword-tag">marketing budget planner</span>
+          <span class="keyword-tag">SEO audit tool</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ SCHEMA ============ -->
+<section id="schema">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Structured Data (Schema Markup)</h2>
+      <p>Schema helps Google understand your content and can unlock rich results like star ratings, FAQs, and business details in search.</p>
+    </div>
+
+    <div class="schema-grid">
+      <div class="schema-col">
+        <h4><span style="color: var(--green);">&#10003;</span> Currently Implemented</h4>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> WebPage (basic page identification)</div>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> BreadcrumbList (navigation path)</div>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> WebSite with SearchAction</div>
+      </div>
+      <div class="schema-col">
+        <h4><span style="color: var(--red);">&#10007;</span> Missing (Recommended)</h4>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> LocalBusiness (address, phone, hours)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> Organization (full company details)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> Service (per service offering)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> Review / AggregateRating</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> FAQPage (for service pages)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> ProfessionalService</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ E-E-A-T ============ -->
+<section id="trust">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Trust & Authority (E-E-A-T)</h2>
+      <p>Google evaluates Experience, Expertise, Authoritativeness, and Trustworthiness. For a marketing agency, these signals are doubly important -- you need to demonstrate the expertise you're selling.</p>
+    </div>
+
+    <div class="eeat-grid">
+      <div class="eeat-card">
+        <div class="eeat-icon">&#128065;</div>
+        <h4>Experience</h4>
+        <div class="eeat-status" style="color: var(--red);">Weak</div>
+        <p>No case studies, client results, or portfolio metrics visible. No evidence of hands-on campaign experience despite years in business.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#127891;</div>
+        <h4>Expertise</h4>
+        <div class="eeat-status" style="color: var(--red);">Weak</div>
+        <p>Service pages are thin lead-capture forms. Blog content is 8+ years old. No team bios, certifications (Google Partner badge?), or educational content.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#127942;</div>
+        <h4>Authoritativeness</h4>
+        <div class="eeat-status" style="color: var(--red);">Weak</div>
+        <p>No visible backlink strategy. No industry mentions, speaking engagements, or thought leadership. Only 3 pages indexed by Google.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#128274;</div>
+        <h4>Trustworthiness</h4>
+        <div class="eeat-status" style="color: var(--orange);">Moderate</div>
+        <p>HTTPS active (good). Contact details visible on contact page. Privacy policy exists. But outdated copyright, no testimonials, and no Google Business Profile optimized.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">9</div>
+      <h2>Prioritized Action Plan</h2>
+      <p>A phased roadmap to transform your site from a liability into your strongest sales asset. Ordered by impact and effort.</p>
+    </div>
+
+    <div class="roadmap">
+
+      <div class="phase phase-1">
+        <div class="phase-header">
+          <div class="phase-number">1</div>
+          <div class="phase-info">
+            <h3>Critical Cleanup</h3>
+            <span class="phase-timeline">Week 1-2 &middot; Fix what's broken, consolidate duplicates</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Set up 301 redirects for all duplicate pages (SEO, Google Ads, Lead Gen, Homepage variants)</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Rewrite all title tags to be under 60 characters with primary keywords first</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Write unique meta descriptions for all active service pages</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Add canonical tags to all pages via Yoast SEO</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Noindex /thank-you/, /home/, and /home-new/ pages</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Update copyright to 2026, replace "Adwords" with "Google Ads" site-wide</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add alt text to all images across the site</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Configure Open Graph and Twitter Card meta tags</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase phase-2">
+        <div class="phase-header">
+          <div class="phase-number">2</div>
+          <div class="phase-info">
+            <h3>Content Deepening</h3>
+            <span class="phase-timeline">Week 3-6 &middot; Build authority with substance</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Expand each service page from thin lead-capture to comprehensive, authoritative content (1,500+ words each)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Create 3-5 detailed case studies with real client results, metrics, and methodology</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add team page with bios, photos, certifications, and LinkedIn profiles</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add LocalBusiness, Service, and ProfessionalService schema markup</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Audit and either update or noindex the 48 outdated blog posts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase phase-3">
+        <div class="phase-header">
+          <div class="phase-number">3</div>
+          <div class="phase-info">
+            <h3>Growth Content</h3>
+            <span class="phase-timeline">Month 2-3 &middot; Expand keyword coverage</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Launch fresh blog content strategy (2-4 posts/month on modern digital marketing topics)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Create location-specific service pages (Cape Town, Johannesburg, Pretoria, Durban)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Build comparison and "vs" content (SEO vs Google Ads, agency vs in-house)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add FAQ sections to each service page with FAQ schema markup</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Build a free tool (Google Ads ROI calculator or SEO audit checker) for lead generation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase phase-4">
+        <div class="phase-header">
+          <div class="phase-number">4</div>
+          <div class="phase-info">
+            <h3>Authority Building</h3>
+            <span class="phase-timeline">Ongoing &middot; Compounding growth</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Consistent blog publishing with internal linking strategy connecting posts to service pages</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Build backlinks through guest posting on SA business and marketing publications</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Optimize Google Business Profile with regular posts, photos, and review generation</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add client testimonials with Review schema markup</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Quarterly SEO audits to track progress and identify new opportunities</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="cta-section">
+  <h2>Ready to Practice What You Preach?</h2>
+  <p>You have the knowledge. The infrastructure exists. It's a matter of focused execution on the roadmap above to turn your own website into the case study that sells your services.</p>
+  <a href="mailto:werner@elevatemarketing.co.za" class="cta-button">
+    Let's Discuss Next Steps &rarr;
+  </a>
+</div>
+
+<div class="footer">
+  SEO Audit Report &middot; Elevate Internet Marketing &middot; February 2026 &middot; Confidential
+</div>
+
+<script>
+  function toggleIssue(header) {
+    const card = header.closest('.issue-card');
+    card.classList.toggle('open');
+  }
+
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (window.scrollY >= top) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }
+
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.score-card, .stat-card, .opp-card, .issue-card, .phase, .cannibal-card, .eeat-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Audit Report - Rooms Online | February 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --accent-light: #ff6b81;
+    --accent-glow: rgba(233, 69, 96, 0.15);
+    --blue: #0f3460;
+    --blue-light: #16213e;
+    --teal: #00b4d8;
+    --teal-dark: #0096c7;
+    --green: #06d6a0;
+    --yellow: #ffd166;
+    --orange: #ef8354;
+    --surface: #ffffff;
+    --surface-alt: #f8f9fc;
+    --border: #e8ecf1;
+    --text: #1a1a2e;
+    --text-light: #5a6275;
+    --text-lighter: #8892a4;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+    --shadow-xl: 0 24px 60px rgba(0,0,0,0.15);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--surface-alt);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: url('https://roomsonline.co.za/wp-content/uploads/2025/10/roomsonline-cheetah-plains.jpg') center center / cover no-repeat;
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,26,46,0.88) 0%, rgba(15,52,96,0.82) 50%, rgba(22,33,62,0.85) 100%);
+    z-index: 1;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(26,26,46,0.95), transparent);
+    z-index: 1;
+  }
+
+  .hero-top-bar {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-logo {
+    height: 44px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  .hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 48px 40px 100px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--accent-light), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    line-height: 1.7;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-meta-item .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+  }
+
+  .hero-meta-item .value {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ============ SCORE STRIP ============ */
+  .score-strip {
+    max-width: 1000px;
+    margin: -50px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .score-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .score-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .score-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .score-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 auto 12px;
+    position: relative;
+  }
+
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    padding: 3px;
+    background: conic-gradient(var(--score-color) var(--score-pct), #e8ecf1 var(--score-pct));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
+  }
+
+  .score-red { --score-color: var(--accent); color: var(--accent); }
+  .score-orange { --score-color: var(--orange); color: var(--orange); }
+  .score-yellow { --score-color: var(--yellow); color: #c9a227; }
+  .score-green { --score-color: var(--green); color: var(--green); }
+
+  .score-card .card-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .score-card .card-desc {
+    font-size: 12px;
+    color: var(--text-lighter);
+  }
+
+  /* ============ NAVIGATION ============ */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 20px;
+  }
+
+  .nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 8px 0;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    background: var(--surface-alt);
+    color: var(--text);
+  }
+
+  .nav-link.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  /* ============ SECTIONS ============ */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--text-light);
+    max-width: 650px;
+  }
+
+  /* ============ WHY SEO SECTION ============ */
+  .why-seo {
+    background: white;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  .stat-card {
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+    padding: 28px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-2px); }
+
+  .stat-card .stat-number {
+    font-size: 40px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .stat-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .stat-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .why-text {
+    margin-top: 32px;
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 800px;
+  }
+
+  .why-text strong { color: var(--text); }
+
+  /* ============ ISSUE CARDS ============ */
+  .issue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .issue-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+
+  .issue-card:hover { box-shadow: var(--shadow-md); }
+
+  .issue-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .issue-header:hover { background: var(--surface-alt); }
+
+  .impact-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .impact-critical {
+    background: rgba(233,69,96,0.1);
+    color: var(--accent);
+  }
+
+  .impact-high {
+    background: rgba(239,131,84,0.1);
+    color: var(--orange);
+  }
+
+  .impact-medium {
+    background: rgba(255,209,102,0.15);
+    color: #b8941e;
+  }
+
+  .impact-low {
+    background: rgba(6,214,160,0.1);
+    color: #059669;
+  }
+
+  .issue-title {
+    font-size: 15px;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .issue-chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--text-lighter);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .issue-card.open .issue-chevron {
+    transform: rotate(180deg);
+  }
+
+  .issue-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .issue-card.open .issue-body {
+    max-height: 800px;
+  }
+
+  .issue-content {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .issue-detail {
+    margin-bottom: 16px;
+  }
+
+  .issue-detail:last-child { margin-bottom: 0; }
+
+  .issue-detail .detail-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 6px;
+  }
+
+  .issue-detail p, .issue-detail li {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .issue-detail ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .issue-detail ul li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .issue-detail ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .fix-box {
+    background: rgba(0,180,216,0.06);
+    border: 1px solid rgba(0,180,216,0.15);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .fix-box p, .fix-box li {
+    color: var(--blue) !important;
+    font-weight: 500;
+  }
+
+  /* ============ TABLE ============ */
+  .audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+  }
+
+  .audit-table th {
+    background: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .audit-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .audit-table tr:last-child td { border-bottom: none; }
+
+  .audit-table tr:hover td { background: var(--surface-alt); }
+
+  .status-ok {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .status-warn {
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .status-fail {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ============ TITLE COMPARISON ============ */
+  .comparison-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .comparison-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+  }
+
+  .comparison-current, .comparison-recommended {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .comparison-current {
+    background: rgba(233,69,96,0.06);
+    border: 1px solid rgba(233,69,96,0.15);
+    color: var(--accent);
+  }
+
+  .comparison-recommended {
+    background: rgba(6,214,160,0.06);
+    border: 1px solid rgba(6,214,160,0.2);
+    color: #047857;
+  }
+
+  .comp-header {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 8px;
+  }
+
+  /* ============ CONTENT OPPORTUNITIES ============ */
+  .opportunity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .opp-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .opp-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .opp-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .opp-icon.blog { background: rgba(233,69,96,0.1); }
+  .opp-icon.services { background: rgba(0,180,216,0.1); }
+  .opp-icon.location { background: rgba(6,214,160,0.1); }
+  .opp-icon.case-study { background: rgba(255,209,102,0.15); }
+  .opp-icon.comparison { background: rgba(15,52,96,0.1); }
+  .opp-icon.trust { background: rgba(239,131,84,0.1); }
+
+  .opp-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .opp-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .keyword-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+
+  /* ============ ROADMAP ============ */
+  .roadmap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .phase {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .phase-1 .phase-number { background: var(--accent); }
+  .phase-2 .phase-number { background: var(--orange); }
+  .phase-3 .phase-number { background: var(--teal); }
+  .phase-4 .phase-number { background: var(--green); }
+
+  .phase-info h3 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .phase-info .phase-timeline {
+    font-size: 13px;
+    color: var(--text-lighter);
+    font-weight: 500;
+  }
+
+  .phase-items {
+    padding: 20px 24px;
+  }
+
+  .phase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .phase-item:last-child { border-bottom: none; }
+
+  .phase-item .check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .phase-item.quick-win .check {
+    background: rgba(6,214,160,0.1);
+    border-color: var(--green);
+  }
+
+  .quick-badge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    background: rgba(6,214,160,0.1);
+    color: var(--green);
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ============ SCHEMA SECTION ============ */
+  .schema-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .schema-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .schema-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .schema-item:last-child { border-bottom: none; }
+
+  .schema-check { color: var(--green); font-weight: bold; }
+  .schema-cross { color: var(--accent); font-weight: bold; }
+
+  /* ============ FOOTER / CTA ============ */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--blue));
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .cta-section p {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 550px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233,69,96,0.4);
+  }
+
+  .footer {
+    background: var(--primary);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 13px;
+  }
+
+  /* ============ EEAT GRID ============ */
+  .eeat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .eeat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .eeat-card .eeat-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .eeat-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .eeat-card .eeat-status {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .eeat-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    .hero-top-bar { padding: 20px 20px 0; }
+    .hero-inner { padding: 32px 20px 80px; }
+    .hero-logo { height: 36px; }
+    .hero-meta { gap: 20px; }
+    section { padding: 40px 0; }
+    .section-header h2 { font-size: 24px; }
+    .comparison-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .comparison-label { display: none; }
+    .schema-grid { grid-template-columns: 1fr; }
+    .score-cards { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .score-cards { grid-template-columns: 1fr; }
+  }
+
+  /* ============ DIVIDER ============ */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    .nav-bar { display: none; }
+    .issue-body { max-height: none !important; }
+    .hero-inner { padding: 30px 40px 60px; }
+    section { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-top-bar">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      SEO AUDIT REPORT
+    </div>
+    <img src="https://roomsonline.co.za/wp-content/uploads/2024/03/ROL-Logo.png" alt="Rooms Online Logo" class="hero-logo">
+  </div>
+  <div class="hero-inner">
+    <div style="display:none" class="hero-badge">
+      <span class="dot"></span>
+      SEO AUDIT REPORT
+    </div>
+    <h1>roomsonline.co.za<br><span>SEO Performance Audit</span></h1>
+    <p class="hero-sub">A comprehensive analysis of your website's search engine optimization, with prioritized recommendations to increase organic visibility, traffic, and bookings.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Prepared For</span>
+        <span class="value">Rooms Online</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Date</span>
+        <span class="value">February 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Pages Analyzed</span>
+        <span class="value">5 pages (full site)</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Issues Found</span>
+        <span class="value">17 issues across 4 categories</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCORE STRIP ============ -->
+<div class="score-strip">
+  <div class="score-cards">
+    <div class="score-card">
+      <div class="score-circle score-green" style="--score-pct: 85%">85</div>
+      <div class="card-label">Technical SEO</div>
+      <div class="card-desc">Solid foundation</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-red" style="--score-pct: 25%">25</div>
+      <div class="card-label">On-Page SEO</div>
+      <div class="card-desc">Critical gaps</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-red" style="--score-pct: 15%">15</div>
+      <div class="card-label">Content Depth</div>
+      <div class="card-desc">Very thin</div>
+    </div>
+    <div class="score-card">
+      <div class="score-circle score-orange" style="--score-pct: 40%">40</div>
+      <div class="card-label">Trust & Authority</div>
+      <div class="card-desc">Needs work</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="#why-seo" class="nav-link">Why SEO Matters</a>
+    <a href="#technical" class="nav-link">Technical</a>
+    <a href="#on-page" class="nav-link">On-Page</a>
+    <a href="#titles" class="nav-link">Title Tags</a>
+    <a href="#content" class="nav-link">Content</a>
+    <a href="#schema" class="nav-link">Schema</a>
+    <a href="#trust" class="nav-link">E-E-A-T</a>
+    <a href="#roadmap" class="nav-link">Action Plan</a>
+  </div>
+</nav>
+
+<!-- ============ WHY SEO ============ -->
+<section id="why-seo" class="why-seo">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Why This Audit Matters</h2>
+      <p>SEO is the single most cost-effective channel for sustainable growth in the hospitality industry. Here's why addressing these issues should be a priority.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">68%</div>
+        <h4>Of Online Experiences Begin with Search</h4>
+        <p>The majority of travellers and property managers start their journey on Google. If your site isn't visible, you're invisible to your ideal clients.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">75%</div>
+        <h4>Never Scroll Past Page One</h4>
+        <p>Three-quarters of searchers never look beyond the first page of results. Ranking on page two is effectively the same as not ranking at all.</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5.7x</div>
+        <h4>Higher ROI Than Paid Ads</h4>
+        <p>Organic search delivers significantly more return per rand than paid advertising, and the results compound over time rather than stopping when you stop spending.</p>
+      </div>
+    </div>
+
+    <div class="why-text">
+      <p>Rooms Online operates in a niche with clear search demand: <strong>property managers and hotel owners actively search for revenue management, channel management, and OTA optimization services.</strong> These are high-intent, commercially valuable keywords.</p>
+      <p style="margin-top: 16px;">Right now, your website has just 5 pages indexed by Google. Competitors with deeper content are capturing the searches your potential clients are making every day. The good news: <strong>the technical foundation is sound</strong> -- your site is secure, crawlable, and mobile-friendly. The gaps are in on-page optimization and content depth, both of which are highly actionable.</p>
+      <p style="margin-top: 16px;">The recommendations in this report are designed to systematically close these gaps, turning your website from a digital brochure into a <strong>client-generating asset</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ TECHNICAL SEO ============ -->
+<section id="technical">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Technical SEO</h2>
+      <p>The infrastructure that determines whether search engines can find, crawl, and index your site. Your technical foundation is solid.</p>
+    </div>
+
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>Status</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HTTPS / SSL</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>SSL certificate active across the site</td>
+        </tr>
+        <tr>
+          <td>Robots.txt</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Open to crawlers, sitemap referenced correctly</td>
+        </tr>
+        <tr>
+          <td>XML Sitemap</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Present via Yoast SEO, 5 URLs listed in page-sitemap.xml</td>
+        </tr>
+        <tr>
+          <td>Canonical Tags</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Self-referencing canonicals on all pages</td>
+        </tr>
+        <tr>
+          <td>Mobile Responsive</td>
+          <td><span class="status-ok">Pass</span></td>
+          <td>Divi theme provides responsive design by default</td>
+        </tr>
+        <tr>
+          <td>Indexed Pages</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>Only 4 of 5 pages appearing in Google index</td>
+        </tr>
+        <tr>
+          <td>Site Architecture</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>Only 5 pages total -- extremely shallow site depth</td>
+        </tr>
+        <tr>
+          <td>Subdomain Strategy</td>
+          <td><span class="status-warn">Warning</span></td>
+          <td>Booking platform on subdomain (book.sleepinafrica.roomsonline.co.za) not linked from main site</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ ON-PAGE SEO ============ -->
+<section id="on-page">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>On-Page SEO Issues</h2>
+      <p>These are the elements on each page that tell Google what it's about and convince searchers to click. This is where the biggest quick wins are.</p>
+    </div>
+
+    <div class="issue-list">
+
+      <!-- Issue 1 -->
+      <div class="issue-card open">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Missing Meta Descriptions on All Pages</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>No meta description tag was found on any of the 5 pages. Google is auto-generating snippets from page content, which are often inaccurate and uncompelling.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Why It Matters</div>
+              <p>Meta descriptions are your "ad copy" in search results. A well-written description can increase click-through rates by 5-10%, meaning more traffic from the same ranking positions.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Write a unique, compelling meta description (150-160 characters) for every page using the Yoast SEO plugin that is already installed. Each description should include the primary keyword and a clear call to action.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 2 -->
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Generic, Non-Descriptive Title Tags</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>All pages use the pattern "[PageName] - Rooms Online" (e.g., "Home - Rooms Online", "Services - Rooms Online"). These contain no target keywords and don't describe what the business does.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Why It Matters</div>
+              <p>Title tags are the single most important on-page ranking factor. Google uses them to understand what a page is about. Generic titles mean Google doesn't know which searches to show your pages for.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Rewrite every title to include target keywords. See the Title Tag Recommendations section below for specific suggestions per page.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 3 -->
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-critical">Critical</span>
+          <span class="issue-title">Weak Heading Structure (H1 Tags)</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>H1 tags use generic labels ("Home", "Services", "Portfolio") rather than descriptive, keyword-rich headings. Sub-headings (H2, H3) are either missing or used for styling rather than content hierarchy.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Why It Matters</div>
+              <p>Headings help Google understand your content structure and topic relevance. They also improve accessibility and user experience.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <ul>
+                  <li>Homepage H1: "Maximize Your Property's Online Revenue"</li>
+                  <li>Services H1: "Hospitality Revenue Management & Distribution Services"</li>
+                  <li>Portfolio H1: "Properties We've Helped Succeed Across Southern Africa"</li>
+                  <li>Use H2s and H3s to create clear content hierarchy within each page</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 4 -->
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-high">High</span>
+          <span class="issue-title">Missing Image Alt Text</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>Images across the site, including the logo and partner logos, lack descriptive alt text. Image file names are generic (e.g., "ROL-Logo.png").</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Add descriptive alt text to every image. Use natural language that describes what the image shows and includes relevant keywords where appropriate. Rename image files to be descriptive (e.g., "rooms-online-hospitality-management-logo.png").</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 5 -->
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-high">High</span>
+          <span class="issue-title">Missing Open Graph & Social Meta Tags</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>No Open Graph (og:) or Twitter Card meta tags were detected. When your pages are shared on social media or messaging apps, they appear without a preview image or description.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Configure Yoast SEO's social settings to add OG tags and Twitter Cards to every page. Create a branded social sharing image (1200x630px) for a professional appearance when links are shared.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 6 -->
+      <div class="issue-card">
+        <div class="issue-header" onclick="toggleIssue(this)">
+          <span class="impact-badge impact-medium">Medium</span>
+          <span class="issue-title">No Contact Details Visible (NAP)</span>
+          <svg class="issue-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>
+        </div>
+        <div class="issue-body">
+          <div class="issue-content">
+            <div class="issue-detail">
+              <div class="detail-label">Evidence</div>
+              <p>The Contact page has a form but no visible phone number, email address, or physical address. NAP (Name, Address, Phone) consistency is a fundamental trust and local SEO signal.</p>
+            </div>
+            <div class="issue-detail">
+              <div class="detail-label">Recommendation</div>
+              <div class="fix-box">
+                <p>Add your full business name, address, phone number, and email to both the Contact page and the site footer. This builds trust with visitors and supports local SEO signals.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ TITLE TAG RECOMMENDATIONS ============ -->
+<section id="titles">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Title Tag Recommendations</h2>
+      <p>Side-by-side comparison of current titles vs. recommended keyword-optimized alternatives.</p>
+    </div>
+
+    <div class="comparison-grid">
+      <div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div></div>
+          <div class="comp-header">Current</div>
+          <div class="comp-header">Recommended</div>
+        </div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Homepage</div>
+        <div class="comparison-current">Home - Rooms Online</div>
+        <div class="comparison-recommended">Hospitality Revenue Management & Online Distribution | Rooms Online</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Services</div>
+        <div class="comparison-current">Services - Rooms Online</div>
+        <div class="comparison-recommended">Hotel Revenue Management & Channel Management Services | Rooms Online</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Portfolio</div>
+        <div class="comparison-current">Portfolio - Rooms Online</div>
+        <div class="comparison-recommended">Our Hotel & Guest House Partners Across Southern Africa | Rooms Online</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Partners</div>
+        <div class="comparison-current">Partners - Rooms Online</div>
+        <div class="comparison-recommended">Technology Partners: Guesty, SiteMinder & More | Rooms Online</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-label">Contact</div>
+        <div class="comparison-current">Contact - Rooms Online</div>
+        <div class="comparison-recommended">Get in Touch - Hospitality Management Experts | Rooms Online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ CONTENT DEPTH ============ -->
+<section id="content">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Content Opportunities</h2>
+      <p>With only 5 pages, you're targeting a fraction of the keywords your potential clients search for. These are the highest-impact content areas to build out.</p>
+    </div>
+
+    <div class="opportunity-grid">
+      <div class="opp-card">
+        <div class="opp-icon services">&#9881;</div>
+        <h4>Individual Service Pages</h4>
+        <p>Break your single Services page into dedicated pages for each offering. Each page becomes a keyword target.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">rate strategy</span>
+          <span class="keyword-tag">channel management</span>
+          <span class="keyword-tag">OTA setup</span>
+          <span class="keyword-tag">booking engine</span>
+          <span class="keyword-tag">PMS integration</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon blog">&#9998;</div>
+        <h4>Blog / Resource Hub</h4>
+        <p>Create educational content targeting long-tail keywords your ideal clients search for. Builds authority and drives organic traffic.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">increase hotel bookings</span>
+          <span class="keyword-tag">OTA commission tips</span>
+          <span class="keyword-tag">revenue management guide</span>
+          <span class="keyword-tag">best channel manager SA</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon location">&#9873;</div>
+        <h4>Location Pages</h4>
+        <p>Target region-specific searches across Southern Africa where your clients operate.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">Cape Town hotels</span>
+          <span class="keyword-tag">Garden Route guest houses</span>
+          <span class="keyword-tag">Johannesburg accommodation</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon case-study">&#9733;</div>
+        <h4>Case Studies</h4>
+        <p>Turn your portfolio into detailed case studies with measurable results. Shows proof and targets bottom-of-funnel searches.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">revenue growth proof</span>
+          <span class="keyword-tag">hotel success stories</span>
+          <span class="keyword-tag">booking increase results</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon comparison">&#9878;</div>
+        <h4>Comparison Content</h4>
+        <p>Create pages comparing tools and platforms your clients research before buying.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">Guesty vs SiteMinder</span>
+          <span class="keyword-tag">best PMS South Africa</span>
+          <span class="keyword-tag">channel manager comparison</span>
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-icon trust">&#128172;</div>
+        <h4>FAQ & Knowledge Base</h4>
+        <p>Answer common questions to capture featured snippets and voice search results. Add FAQ schema for enhanced SERP visibility.</p>
+        <div class="keyword-tags">
+          <span class="keyword-tag">what is a channel manager</span>
+          <span class="keyword-tag">how OTAs work</span>
+          <span class="keyword-tag">hotel revenue management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ SCHEMA ============ -->
+<section id="schema">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <h2>Structured Data (Schema Markup)</h2>
+      <p>Schema tells search engines exactly what your content means, enabling rich results and better understanding.</p>
+    </div>
+
+    <div class="schema-grid">
+      <div class="schema-col">
+        <h4><span style="color: var(--green);">&#10003;</span> Currently Implemented</h4>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> Organization (name, logo, social links)</div>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> WebPage (each page identified)</div>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> BreadcrumbList (navigation path)</div>
+        <div class="schema-item"><span class="schema-check">&#10003;</span> SearchAction (site search)</div>
+      </div>
+      <div class="schema-col">
+        <h4><span style="color: var(--accent);">&#10007;</span> Missing (Recommended)</h4>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> LocalBusiness (address, phone, hours)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> Service (per service offering)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> Review / AggregateRating (testimonials)</div>
+        <div class="schema-item"><span class="schema-cross">&#10007;</span> FAQPage (once FAQ content exists)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ E-E-A-T ============ -->
+<section id="trust">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <h2>Trust & Authority (E-E-A-T)</h2>
+      <p>Google evaluates Experience, Expertise, Authoritativeness, and Trustworthiness to determine if your site deserves to rank.</p>
+    </div>
+
+    <div class="eeat-grid">
+      <div class="eeat-card">
+        <div class="eeat-icon">&#128065;</div>
+        <h4>Experience</h4>
+        <div class="eeat-status" style="color: var(--accent);">Weak</div>
+        <p>No case studies, client stories, or first-hand results visible. Add proof of real-world experience with properties.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#127891;</div>
+        <h4>Expertise</h4>
+        <div class="eeat-status" style="color: var(--orange);">Moderate</div>
+        <p>Services page describes what you do but lacks depth. No team bios, credentials, or educational content demonstrating knowledge.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#127942;</div>
+        <h4>Authoritativeness</h4>
+        <div class="eeat-status" style="color: var(--accent);">Weak</div>
+        <p>No backlinks strategy, industry mentions, or thought leadership content. Partner logos help but need more signals.</p>
+      </div>
+      <div class="eeat-card">
+        <div class="eeat-icon">&#128274;</div>
+        <h4>Trustworthiness</h4>
+        <div class="eeat-status" style="color: var(--orange);">Moderate</div>
+        <p>HTTPS is active (good), but missing physical address, phone number, testimonials, and privacy policy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-number">8</div>
+      <h2>Prioritized Action Plan</h2>
+      <p>A phased roadmap to systematically address all findings, ordered by impact and effort.</p>
+    </div>
+
+    <div class="roadmap">
+
+      <!-- Phase 1 -->
+      <div class="phase phase-1">
+        <div class="phase-header">
+          <div class="phase-number">1</div>
+          <div class="phase-info">
+            <h3>Critical Fixes</h3>
+            <span class="phase-timeline">Week 1-2 &middot; Highest impact, lowest effort</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Rewrite all 5 title tags with target keywords (use Yoast SEO)</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Write unique meta descriptions for every page (150-160 chars)</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Update H1 tags to be descriptive and keyword-rich</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Add full NAP (name, address, phone) to contact page and footer</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item quick-win">
+            <div class="check"></div>
+            <span>Add descriptive alt text to all images across the site</span>
+            <span class="quick-badge">Quick Win</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Configure Open Graph and Twitter Card meta tags via Yoast</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Link to booking platform from main site navigation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase phase-2">
+        <div class="phase-header">
+          <div class="phase-number">2</div>
+          <div class="phase-info">
+            <h3>High-Impact Improvements</h3>
+            <span class="phase-timeline">Week 3-6 &middot; Building depth and trust</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Break Services into 5 individual service pages (rate strategy, channel management, OTA management, booking engines, PMS integration)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add LocalBusiness and Service schema markup</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Create 2-3 detailed case studies with real metrics from portfolio properties</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add client testimonials with Review schema markup</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Add team/about page with bios and credentials</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase phase-3">
+        <div class="phase-header">
+          <div class="phase-number">3</div>
+          <div class="phase-info">
+            <h3>Content Strategy</h3>
+            <span class="phase-timeline">Month 2-3 &middot; Expanding keyword coverage</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Launch a blog targeting hospitality keywords relevant to the South African market</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Create location pages for key markets (Cape Town, Johannesburg, Garden Route, etc.)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Build comparison content (e.g., "Best Channel Managers for SA Hotels")</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Create FAQ page with FAQ schema markup for featured snippet opportunities</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase phase-4">
+        <div class="phase-header">
+          <div class="phase-number">4</div>
+          <div class="phase-info">
+            <h3>Long-Term Growth</h3>
+            <span class="phase-timeline">Ongoing &middot; Compounding organic growth</span>
+          </div>
+        </div>
+        <div class="phase-items">
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Consistent blog publishing (2-4 posts/month targeting long-tail hospitality keywords)</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Build backlinks through SA hospitality associations and tourism boards</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Evaluate moving booking platform to subdirectory (/book/) to consolidate domain authority</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Set up and monitor Google Search Console and Google Business Profile</span>
+          </div>
+          <div class="phase-item">
+            <div class="check"></div>
+            <span>Quarterly SEO reviews to track progress and adjust strategy</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="cta-section">
+  <h2>Ready to Get Started?</h2>
+  <p>The technical foundation is solid. With focused effort on the quick wins and content strategy outlined above, there's significant organic growth potential for Rooms Online.</p>
+  <a href="mailto:hello@example.com" class="cta-button">
+    Let's Discuss Next Steps &rarr;
+  </a>
+</div>
+
+<div class="footer">
+  SEO Audit Report &middot; Rooms Online &middot; February 2026 &middot; Confidential
+</div>
+
+<script>
+  // Toggle issue cards
+  function toggleIssue(header) {
+    const card = header.closest('.issue-card');
+    card.classList.toggle('open');
+  }
+
+  // Sticky nav active state
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  function updateNav() {
+    let current = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 100;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateNav);
+  updateNav();
+
+  // Smooth scroll for nav
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Animate score circles on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.score-card, .stat-card, .opp-card, .issue-card, .phase').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
