@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Report — Tourism Marketing SA</title>
+  <style>
+    :root {
+      --coral:       #E07050;   /* TMSA logo "t" + button */
+      --coral-dark:  #C25035;
+      --coral-light: #FDF1EE;
+      --teal:        #4AB0B8;   /* TMSA logo "m" */
+      --teal-light:  #EAF6F7;
+      --teal-dark:   #329AA2;
+      --bg:          #F5F3F0;   /* warm off-white — matches site's airy feel */
+      --card:        #FFFFFF;
+      --border:      #E6E1DC;
+      --text:        #1A1208;   /* warm near-black */
+      --muted:       #7A7060;   /* warm grey */
+      --good-bg:     #EAF7F0;
+      --good-text:   #1A6B3A;
+      --good-border: #A9DDB9;
+      --ok-bg:       #FEF8E8;
+      --ok-text:     #7A5C0A;
+      --ok-border:   #F0D87A;
+      --warn-bg:     #FEF0EE;
+      --warn-text:   #9B2A1A;
+      --warn-border: #F2B0A8;
+      --miss-bg:     #F2F0ED;
+      --miss-text:   #5A5248;
+      --miss-border: #C8C0B8;
+      --radius:      10px;
+      --shadow:      0 2px 10px rgba(0,0,0,0.07);
+      --shadow-lg:   0 4px 20px rgba(0,0,0,0.11);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Header ── */
+    .header {
+      background:
+        linear-gradient(150deg, rgba(14,8,3,0.45) 0%, rgba(30,16,6,0.40) 50%, rgba(38,22,8,0.38) 100%),
+        url("https://www.tourismmarketing.co.za/wp-content/uploads/2024/08/TMSA-Home-01.jpg") center / cover no-repeat;
+      border-bottom: 3px solid var(--coral);
+      padding: 64px 48px 56px;
+      color: #fff;
+    }
+    .header-inner { max-width: 1280px; margin: 0 auto; }
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(224,112,80,0.18);
+      border: 1px solid rgba(224,112,80,0.4);
+      border-radius: 4px;
+      padding: 5px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 22px;
+    }
+    .header-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--coral);
+      border-radius: 50%;
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 1px;         /* wide tracking like TMSA hero headings */
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .header-sub {
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 36px;
+      text-transform: uppercase;
+    }
+    .header-intro {
+      max-width: 680px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .header-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.60);
+      letter-spacing: 0.3px;
+    }
+    .chip strong { color: rgba(255,255,255,0.90); font-weight: 600; }
+
+    /* ── Stats ── */
+    .stats-wrap {
+      max-width: 1280px;
+      margin: -28px auto 0;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .stat {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      border-left: 3px solid var(--teal);
+    }
+    .stat.accent { border-left-color: var(--coral); }
+    .stat.warn   { border-left-color: #C25035; }
+    .stat-num {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--coral-dark);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Legend ── */
+    .legend {
+      max-width: 1280px;
+      margin: 32px auto 0;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .legend-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .badge { display: inline-flex; align-items: center; gap: 3px; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; border: 1px solid; }
+    .badge-good    { background: var(--good-bg);  color: var(--good-text);  border-color: var(--good-border); }
+    .badge-ok      { background: var(--ok-bg);    color: var(--ok-text);    border-color: var(--ok-border); }
+    .badge-warn    { background: var(--warn-bg);   color: var(--warn-text);  border-color: var(--warn-border); }
+    .badge-missing { background: var(--miss-bg);   color: var(--miss-text);  border-color: var(--miss-border); }
+
+    /* ── Main ── */
+    .main {
+      max-width: 1280px;
+      margin: 32px auto 60px;
+      padding: 0 48px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .tabs {
+      display: flex;
+      gap: 3px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 5px;
+      box-shadow: var(--shadow);
+    }
+    .tab-btn {
+      padding: 8px 22px;
+      border: none;
+      background: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { background: var(--bg); color: var(--text); }
+    .tab-btn.active { background: var(--coral); color: #fff; }
+    .tab-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 0 7px;
+      font-size: 11px;
+      margin-left: 5px;
+      min-width: 22px;
+    }
+    .tab-btn:not(.active) .tab-count { background: var(--bg); color: var(--muted); }
+
+    .filter-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+      max-width: 420px;
+    }
+    .filter-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .filter-input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 13px;
+      background: var(--card);
+      color: var(--text);
+      outline: none;
+      box-shadow: var(--shadow);
+      transition: border-color 0.15s;
+    }
+    .filter-input:focus { border-color: var(--coral); }
+    .filter-input::placeholder { color: var(--muted); }
+
+    .quality-filter {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .qbtn {
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid;
+      background: var(--card);
+      transition: all 0.15s;
+    }
+    .qbtn[data-q="all"]     { color: var(--coral-dark); border-color: var(--coral); }
+    .qbtn[data-q="good"]    { color: var(--good-text); border-color: var(--good-border); }
+    .qbtn[data-q="ok"]      { color: var(--ok-text); border-color: var(--ok-border); }
+    .qbtn[data-q="warn"]    { color: var(--warn-text); border-color: var(--warn-border); }
+    .qbtn[data-q="missing"] { color: var(--miss-text); border-color: var(--miss-border); }
+    .qbtn.active, .qbtn:hover { opacity: 0.85; }
+    .qbtn[data-q="all"].active    { background: var(--coral); color: #fff; border-color: var(--coral); }
+    .qbtn[data-q="good"].active   { background: var(--good-bg); }
+    .qbtn[data-q="ok"].active     { background: var(--ok-bg); }
+    .qbtn[data-q="warn"].active   { background: var(--warn-bg); }
+    .qbtn[data-q="missing"].active{ background: var(--miss-bg); }
+
+    /* ── Tab panels ── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Item grid ── */
+    .item-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .item-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .item-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+    .item-card-inner {
+      display: grid;
+      grid-template-columns: 240px 1fr 1fr;
+      min-height: 90px;
+    }
+
+    /* Col 1 — identity */
+    .item-identity {
+      padding: 18px 20px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+    .item-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .item-url {
+      font-size: 11px;
+      color: var(--teal-dark);
+      text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+    .item-url:hover { text-decoration: underline; color: var(--coral); }
+    .item-id {
+      font-size: 10px;
+      color: var(--muted);
+      background: var(--bg);
+      border-radius: 4px;
+      padding: 1px 7px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Col 2 & 3 — SEO fields */
+    .item-field {
+      padding: 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-right: 1px solid var(--border);
+    }
+    .item-field:last-child { border-right: none; }
+    .field-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .field-name {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .field-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .field-text.empty {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 12px;
+    }
+    .field-kw {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .kw-tag {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      border-radius: 4px;
+      padding: 1px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid #9ED4D8;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .no-results svg { margin-bottom: 16px; opacity: 0.35; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 32px 48px 48px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer a { color: var(--coral); text-decoration: none; }
+    .footer a:hover { color: var(--coral-dark); }
+
+    @media print {
+      body { background: white; font-size: 11px; }
+      .header { padding: 32px 32px 28px; }
+      .stats-wrap, .main { padding: 0 32px; }
+      .controls { display: none; }
+      .tab-panel { display: block !important; }
+      .item-card { break-inside: avoid; margin-bottom: 8px; }
+      .stats-wrap { margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">SEO Update Report</div>
+    <h1>Tourism Marketing SA</h1>
+    <p class="header-sub">tourismmarketing.co.za &mdash; Rank Math SEO Batch Update</p>
+    <div class="header-chips">
+      <div class="chip">Generated <strong>18 February 2026 at 12:21</strong></div>
+      <div class="chip">WordPress + <strong>Rank Math</strong></div>
+      <div class="chip">TMSA SEO Automation</div>
+    </div>
+    <p class="header-intro">
+      This report shows the current state of all SEO title tags and meta descriptions
+      live on <strong style="color:rgba(255,255,255,0.90)">tourismmarketing.co.za</strong>.
+      Every page and post has been reviewed and optimised with hospitality-specific copy,
+      targeted keywords, and Google best-practice character counts — with the goal of
+      improving search visibility and driving more direct bookings.
+      Use the quality indicators below to identify any items that still need attention.
+    </p>
+  </div>
+</header>
+
+<div class="stats-wrap">
+  <div class="stat"><div class="stat-num">18</div><div class="stat-label">Pages Indexed</div></div>
+  <div class="stat"><div class="stat-num">97</div><div class="stat-label">Posts Indexed</div></div>
+  <div class="stat accent"><div class="stat-num">115</div><div class="stat-label">Total Items</div></div>
+  <div class="stat"><div class="stat-num">57</div><div class="stat-label">Titles Optimal</div></div>
+  <div class="stat warn"><div class="stat-num">5</div><div class="stat-label">Missing Descriptions</div></div>
+</div>
+
+<div class="legend">
+  <span class="legend-label">Quality key:</span>
+  <span class="legend-item"><span class="badge badge-good">50&ndash;60c</span> Title optimal</span>
+  <span class="legend-item"><span class="badge badge-ok">45&ndash;65c</span> Acceptable</span>
+  <span class="legend-item"><span class="badge badge-warn">&#8943;</span> Too short / long</span>
+  <span class="legend-item"><span class="badge badge-missing">Missing</span> Not set</span>
+  <span class="legend-item" style="margin-left:8px;border-left:1px solid var(--border);padding-left:16px"><span class="badge badge-good">150&ndash;160c</span> Desc optimal</span>
+  <span class="legend-item"><span class="badge badge-ok">140&ndash;170c</span> Acceptable</span>
+</div>
+
+<main class="main">
+  <div class="controls">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('pages')">
+        Pages<span class="tab-count" id="tc-pages">18</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('posts')">
+        Posts<span class="tab-count" id="tc-posts">97</span>
+      </button>
+    </div>
+    <div class="filter-wrap">
+      <svg class="filter-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" class="filter-input" id="search" placeholder="Search by title, URL or keyword&hellip;" oninput="applyFilters()">
+    </div>
+    <div class="quality-filter">
+      <button class="qbtn active" data-q="all" onclick="setQ('all')">All</button>
+      <button class="qbtn" data-q="good" onclick="setQ('good')">&#10003; Optimal</button>
+      <button class="qbtn" data-q="ok" onclick="setQ('ok')">&#9679; OK</button>
+      <button class="qbtn" data-q="warn" onclick="setQ('warn')">&#9650; Needs attention</button>
+      <button class="qbtn" data-q="missing" onclick="setQ('missing')">&#8212; Missing</button>
+    </div>
+  </div>
+
+  <div id="panel-pages" class="tab-panel active">
+    <div class="item-list" id="list-pages"></div>
+    <div class="no-results" id="nr-pages" style="display:none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <div>No pages match your filters.</div>
+    </div>
+  </div>
+  <div id="panel-posts" class="tab-panel">
+    <div class="item-list" id="list-posts"></div>
+    <div class="no-results" id="nr-posts" style="display:none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <div>No posts match your filters.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>
+    Tourism Marketing SA &mdash; SEO Report generated 18 February 2026 at 12:21<br>
+    <a href="https://www.tourismmarketing.co.za" target="_blank">https://www.tourismmarketing.co.za</a>
+  </p>
+</footer>
+
+<script>
+const PAGES_DATA = [{"id": 14426, "title": "Reviews Test 2022", "slug": "reviews-test-2022", "url": "https://www.tourismmarketing.co.za/reviews-test-2022/", "seo_title": "Internet Marketing Solutions - Tourism Marketing SA", "seo_desc": "Internet Marketing Solutions - Tourism Marketing SA is a services company providing marketing solutions for hospitality and tourism in South Africa", "focus_kw": "internet marketing solutions"}, {"id": 14378, "title": "Thank You", "slug": "thank-you", "url": "https://www.tourismmarketing.co.za/thank-you/", "seo_title": "", "seo_desc": "", "focus_kw": ""}, {"id": 13843, "title": "Portfolio", "slug": "portfolio", "url": "https://www.tourismmarketing.co.za/portfolio/", "seo_title": "Hospitality Marketing Portfolio | Tourism Marketing SA", "seo_desc": "Explore how Tourism Marketing SA helps South African guesthouses, lodges & tour operators grow direct bookings with SEO, web design & digital marketing.", "focus_kw": ""}, {"id": 10462, "title": "Error 404", "slug": "error-404", "url": "https://www.tourismmarketing.co.za/error-404/", "seo_title": "Wordpress Website Design for Guest Houses, Lodge, Hotel & BnB | TMSA", "seo_desc": "Professional Web Design & Development for your Establishment. Tourism Marketing SA is an Internet Marketing Specialist. Travellers are discovering your Guest House, Lodge, Hotel and B&B on the Internet via websites like Google, Booking.com, Tripadvisor, AirBnB and many more.", "focus_kw": ""}, {"id": 10393, "title": "Thank you Old", "slug": "thank-you-old", "url": "https://www.tourismmarketing.co.za/thank-you-old/", "seo_title": "Wordpress Website Design for Guest Houses, Lodge, Hotel & BnB | TMSA", "seo_desc": "Professional Web Design & Development for your Establishment. Tourism Marketing SA is an Internet Marketing Specialist. Travellers are discovering your Guest House, Lodge, Hotel and B&B on the Internet via websites like Google, Booking.com, Tripadvisor, AirBnB and many more.", "focus_kw": ""}, {"id": 10390, "title": "Guest House Tourism Marketing and Hotel Advertising", "slug": "guest-house-hotel-tourism-marketing-advertising", "url": "https://www.tourismmarketing.co.za/guest-house-hotel-tourism-marketing-advertising/", "seo_title": "Hospitality Marketing Services for SA Lodges & Hotels | TMSA", "seo_desc": "Full-service digital marketing for guesthouses, lodges, boutique hotels & safari stays in Southern Africa. SEO, web design, Google Ads, social media & more.", "focus_kw": "Guest House Marketing"}, {"id": 10320, "title": "About Us", "slug": "internet-marketing-solutions", "url": "https://www.tourismmarketing.co.za/internet-marketing-solutions/", "seo_title": "About Us | Hospitality Marketing Specialists | TMSA", "seo_desc": "Specialist hospitality marketing agency helping guesthouses, lodges & hotels across Southern Africa grow direct bookings. 20+ years of industry experience.", "focus_kw": "internet marketing solutions"}, {"id": 10306, "title": "Website Hosting", "slug": "website-hosting", "url": "https://www.tourismmarketing.co.za/website-hosting/", "seo_title": "Secure Website Hosting for Guesthouses & Lodges | TMSA", "seo_desc": "Affordable, fully-managed website & email hosting for South African guesthouses, lodges & hotels. 99.9% uptime, dedicated servers & telephonic support.", "focus_kw": ""}, {"id": 10303, "title": "Domain Registration", "slug": "domain-registration", "url": "https://www.tourismmarketing.co.za/domain-registration/", "seo_title": "Domain Registration for Hospitality Businesses | TMSA", "seo_desc": "Register and manage your domain name with ease. TMSA provides domain registration and ongoing management for guesthouses, lodges & hotels in Southern Africa.", "focus_kw": ""}, {"id": 10300, "title": "Email Marketing", "slug": "email-marketing", "url": "https://www.tourismmarketing.co.za/email-marketing/", "seo_title": "Email Marketing for Guesthouses, Lodges & Hotels | TMSA", "seo_desc": "Build guest relationships and drive repeat bookings. TMSA creates professional email campaigns for guesthouses, lodges & hotels across Southern Africa.", "focus_kw": ""}, {"id": 10295, "title": "Social Media Marketing", "slug": "social-media", "url": "https://www.tourismmarketing.co.za/social-media/", "seo_title": "Social Media Marketing for Guesthouses & Lodges | TMSA", "seo_desc": "Turn followers into guests. TMSA manages social media for guesthouses & lodges across Southern Africa — content that builds communities and drives bookings.", "focus_kw": ""}, {"id": 10292, "title": "Search Engine Optimisation", "slug": "seo-marketing", "url": "https://www.tourismmarketing.co.za/seo-marketing/", "seo_title": "SEO Services for Guesthouses, Lodges & Hotels | TMSA", "seo_desc": "Rank higher on Google and attract more guests. TMSA's hospitality SEO increases visibility and drives direct bookings for guesthouses & lodges in South Africa.", "focus_kw": "search engine optimisation"}, {"id": 10288, "title": "Google AdWords Marketing", "slug": "google-adwords-marketing", "url": "https://www.tourismmarketing.co.za/google-adwords-marketing/", "seo_title": "Google Ads Management for Guesthouses & Lodges | TMSA", "seo_desc": "Reach travellers actively searching for accommodation in your area. TMSA manages Google Ads campaigns for guesthouses, lodges & hotels across Southern Africa.", "focus_kw": "google adwords"}, {"id": 10284, "title": "Website Design", "slug": "website-design", "url": "https://www.tourismmarketing.co.za/website-design/", "seo_title": "Website Design for Guesthouses, Lodges & Hotels | TMSA", "seo_desc": "Mobile-friendly WordPress websites for guesthouses, lodges & hotels in Southern Africa. Built to convert visitors into direct bookings.", "focus_kw": ""}, {"id": 10263, "title": "Portfolio old", "slug": "portfolio-old", "url": "https://www.tourismmarketing.co.za/portfolio-old/", "seo_title": "", "seo_desc": "", "focus_kw": ""}, {"id": 10251, "title": "Our Blog", "slug": "our-blog", "url": "https://www.tourismmarketing.co.za/our-blog/", "seo_title": "Hospitality Marketing Blog | Tourism Marketing SA Tips", "seo_desc": "Expert digital marketing tips and insights for guesthouses, lodges & hotels in Southern Africa. Practical advice to grow direct bookings and increase occupancy.", "focus_kw": ""}, {"id": 10069, "title": "Contact", "slug": "contact", "url": "https://www.tourismmarketing.co.za/contact/", "seo_title": "Contact Tourism Marketing SA | Book a Free Consultation", "seo_desc": "Contact Tourism Marketing SA to book your free strategy consultation. We help guesthouses, lodges & hotels grow direct bookings across Southern Africa.", "focus_kw": ""}, {"id": 2781, "title": "Home", "slug": "home", "url": "https://www.tourismmarketing.co.za/", "seo_title": "Tourism Marketing SA | Hospitality Marketing Agency", "seo_desc": "Tourism Marketing SA helps guesthouses, lodges & hotels across Southern Africa grow direct bookings with expert SEO, web design & digital marketing.", "focus_kw": "internet marketing"}];
+const POSTS_DATA = [{"id": 15145, "title": "OTA Management in South Africa – A Guide for Guesthouses and Lodges", "slug": "ota-management-revenue-strategies-south-african-guesthouses-lodges", "url": "https://www.tourismmarketing.co.za/ota-management-revenue-strategies-south-african-guesthouses-lodges/", "seo_title": "OTA Management in South Africa: Guide for Guesthouses & Lodges", "seo_desc": "Reduce OTA commissions and grow direct bookings. A practical guide to OTA management strategies for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 15108, "title": "Sustainable Storytelling – How Eco-Conscious Branding Attracts Modern Travellers", "slug": "sustainable-storytelling", "url": "https://www.tourismmarketing.co.za/sustainable-storytelling/", "seo_title": "Sustainable Tourism Marketing: Eco Branding Attracts Travellers", "seo_desc": "Eco-conscious branding is becoming a booking driver. Learn how sustainable storytelling helps South African guesthouses & lodges attract modern travellers.", "focus_kw": ""}, {"id": 15101, "title": "Beyond Instagram: How to Turn Social Media Followers into Bookings in 2026", "slug": "turn-social-media-followers-into-bookings", "url": "https://www.tourismmarketing.co.za/turn-social-media-followers-into-bookings/", "seo_title": "Turn Social Media Followers into Bookings in 2026 | TMSA", "seo_desc": "Stop collecting likes and start generating bookings. Practical social media strategies for South African guesthouses & lodges to convert followers into guests.", "focus_kw": ""}, {"id": 15095, "title": "Turn Reviews into Revenue: A Step-by-Step Guide to Managing Online Feedback", "slug": "turn-reviews-into-revenue-boosting-bookings", "url": "https://www.tourismmarketing.co.za/turn-reviews-into-revenue-boosting-bookings/", "seo_title": "Turn Reviews into Revenue: Managing Online Feedback for SA Properties", "seo_desc": "Step-by-step guide to turning guest reviews into more bookings. Manage feedback on Booking.com, TripAdvisor & Google for your South African property.", "focus_kw": ""}, {"id": 15069, "title": "AI in Hospitality Marketing: 5 Tools That Can Save You Time and Increase Bookings", "slug": "ai-hospitality-marketing-tools-south-africa", "url": "https://www.tourismmarketing.co.za/ai-hospitality-marketing-tools-south-africa/", "seo_title": "AI in Hospitality Marketing: 5 Tools That Save Time & Boost Bookings", "seo_desc": "Discover 5 AI tools South African guesthouses & lodges can use to automate marketing, personalise guest experiences, and increase direct bookings.", "focus_kw": ""}, {"id": 15063, "title": "How to Use Local Events and Festivals to Fill Your Rooms Year-Round", "slug": "local-events-festivals-fill-guest-house-rooms", "url": "https://www.tourismmarketing.co.za/local-events-festivals-fill-guest-house-rooms/", "seo_title": "Using Local Events & Festivals to Fill Rooms Year-Round | TMSA", "seo_desc": "Learn how to leverage local events and festivals to increase occupancy year-round. Seasonal marketing strategies for South African guesthouses & lodges.", "focus_kw": ""}, {"id": 15058, "title": "Stop Paying High Commissions: How to Drive Direct Bookings to Your Guest House in 2026", "slug": "drive-direct-bookings-to-your-guest-house", "url": "https://www.tourismmarketing.co.za/drive-direct-bookings-to-your-guest-house/", "seo_title": "Stop Paying High OTA Commissions: Drive Direct Bookings | TMSA", "seo_desc": "Reduce your reliance on Booking.com and Airbnb. Practical strategies to drive more direct bookings and cut OTA commission costs for your accommodation.", "focus_kw": ""}, {"id": 15052, "title": "Maximise Bookings with These 5 Must-Have Features for Guest House Websites in 2025", "slug": "guest-house-website-features-2025", "url": "https://www.tourismmarketing.co.za/guest-house-website-features-2025/", "seo_title": "5 Must-Have Website Features to Maximise Guest House Bookings", "seo_desc": "Is your website converting visitors into guests? Discover the 5 essential features every South African guest house needs to maximise direct bookings online.", "focus_kw": ""}, {"id": 1172, "title": "10 Successful Ways to Advertise Your Guest House", "slug": "advertise-guest-house", "url": "https://www.tourismmarketing.co.za/advertise-guest-house/", "seo_title": "10 Successful Ways to Advertise Your Guest House | TMSA", "seo_desc": "10 proven ways to advertise your guest house and grow direct bookings. Practical advertising strategies for South African accommodation owners.", "focus_kw": ""}, {"id": 15028, "title": "10 Guest House Advertising Ideas to Boost Your Direct Bookings in 2025", "slug": "guest-house-advertising-ideas-boosting-bookings", "url": "https://www.tourismmarketing.co.za/guest-house-advertising-ideas-boosting-bookings/", "seo_title": "10 Guest House Advertising Ideas to Boost Direct Bookings in 2025", "seo_desc": "10 proven advertising strategies to fill your guest house in 2025. Practical ideas for South African accommodation owners to grow direct bookings online.", "focus_kw": ""}, {"id": 14778, "title": "How Google Reviews Can Transform Accommodation Businesses", "slug": "google-reviews-transform-hotel-business", "url": "https://www.tourismmarketing.co.za/google-reviews-transform-hotel-business/", "seo_title": "How Google Reviews Transform Accommodation Businesses | TMSA", "seo_desc": "More reviews mean more direct bookings. Learn how Google Reviews build trust, improve search rankings, and grow your guesthouse or lodge in South Africa.", "focus_kw": ""}, {"id": 14770, "title": "How do I respond to reviews on platforms like Booking.com or TripAdvisor?", "slug": "responding-to-reviews-on-platforms", "url": "https://www.tourismmarketing.co.za/responding-to-reviews-on-platforms/", "seo_title": "How to Respond to Reviews on Booking.com & TripAdvisor | TMSA", "seo_desc": "Master the art of responding to online reviews. A guide for South African guesthouses & lodges to build reputation and turn feedback into more bookings.", "focus_kw": ""}, {"id": 14758, "title": "From Likes to Bookings: Effective Social Media Strategies for the Travel Industry", "slug": "social-media-strategy-for-tourism-businesses", "url": "https://www.tourismmarketing.co.za/social-media-strategy-for-tourism-businesses/", "seo_title": "From Likes to Bookings: Social Media Strategies for Travel | TMSA", "seo_desc": "Move beyond vanity metrics. Discover effective social media strategies that convert followers into paying guests for South African accommodation providers.", "focus_kw": ""}, {"id": 14745, "title": "2025 Social Media Trends: What Works for Hotels, Lodges &amp; Guest Houses", "slug": "2025-social-media-trends", "url": "https://www.tourismmarketing.co.za/2025-social-media-trends/", "seo_title": "2025 Social Media Trends for Hotels, Lodges & Guest Houses | TMSA", "seo_desc": "Stay ahead with the latest social media trends for hospitality. What works for South African hotels, lodges & guesthouses to grow bookings and online reach.", "focus_kw": ""}, {"id": 14692, "title": "How AI is Revolutionising the Hospitality Industry and Marketing", "slug": "how-ai-is-revolutionising-the-hospitality-industry-and-marketing", "url": "https://www.tourismmarketing.co.za/how-ai-is-revolutionising-the-hospitality-industry-and-marketing/", "seo_title": "How AI Is Revolutionising Hospitality Marketing | TMSA", "seo_desc": "Artificial intelligence is changing how guesthouses & lodges market themselves. Discover how AI tools are boosting bookings and efficiency in South Africa.", "focus_kw": ""}, {"id": 14686, "title": "The Beach Palace Ramsgate Wins Prestigious International Award – A Proud Moment for TMSA", "slug": "beach-palace-ramsgate-award", "url": "https://www.tourismmarketing.co.za/beach-palace-ramsgate-award/", "seo_title": "The Beach Palace Ramsgate Wins International Travel Award | TMSA", "seo_desc": "TMSA client The Beach Palace Ramsgate wins a prestigious international travel award — celebrating world-class hospitality on the KwaZulu-Natal South Coast.", "focus_kw": ""}, {"id": 14654, "title": "Get ready for Spring!", "slug": "get-ready-for-spring", "url": "https://www.tourismmarketing.co.za/get-ready-for-spring/", "seo_title": "Get Ready for Spring: Hospitality Marketing Tips for the Season", "seo_desc": "Spring brings more travellers and more bookings. Seasonal marketing tips to prepare your guesthouse or lodge for the spring rush in South Africa.", "focus_kw": ""}, {"id": 14634, "title": "The Beach Palace Ramsgate is Nominated for International Travel Awards", "slug": "nominated-for-international-travel-awards-2024", "url": "https://www.tourismmarketing.co.za/nominated-for-international-travel-awards-2024/", "seo_title": "The Beach Palace Ramsgate Nominated for International Travel Awards", "seo_desc": "Tourism Marketing SA client The Beach Palace Ramsgate has been nominated for International Travel Awards, recognising outstanding hospitality on the SA coast.", "focus_kw": ""}, {"id": 14625, "title": "Boosting Winter Occupancy", "slug": "boosting-winter-occupancy-2024", "url": "https://www.tourismmarketing.co.za/boosting-winter-occupancy-2024/", "seo_title": "Boosting Winter Occupancy for South African Guesthouses | TMSA", "seo_desc": "Winter doesn't have to mean empty rooms. Proven strategies to boost occupancy during the off-season for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 14611, "title": "Boosting Winter Occupancy: A Guide for Guest House Owners in South Africa", "slug": "boosting-winter-occupancy", "url": "https://www.tourismmarketing.co.za/boosting-winter-occupancy/", "seo_title": "Boosting Winter Occupancy: Guide for Guest House Owners in SA", "seo_desc": "A complete guide to increasing winter bookings for South African guest house owners. Practical marketing tactics to fill rooms during the slow season.", "focus_kw": ""}, {"id": 14602, "title": "Tourism Marketing Tips and Trends for 2024", "slug": "tourism-marketing-tips-and-trends-for-2024", "url": "https://www.tourismmarketing.co.za/tourism-marketing-tips-and-trends-for-2024/", "seo_title": "Tourism Marketing Tips and Trends for 2024 | TMSA", "seo_desc": "Key tourism marketing trends for 2024 and how South African accommodation providers can adapt their strategy to grow visibility and direct bookings.", "focus_kw": ""}, {"id": 14589, "title": "How to Boost Your Winter Bookings", "slug": "how-to-boost-your-winter-bookings", "url": "https://www.tourismmarketing.co.za/how-to-boost-your-winter-bookings/", "seo_title": "How to Boost Winter Bookings for Your Guesthouse | TMSA", "seo_desc": "Struggling with winter vacancies? Practical marketing tips to boost bookings during the quiet season for South African guesthouses and lodges.", "focus_kw": ""}, {"id": 14558, "title": "The Impact of Artificial Intelligence (AI) for Hospitality Marketing", "slug": "the-impact-of-artificial-intelligence-for-hospitality-marketing", "url": "https://www.tourismmarketing.co.za/the-impact-of-artificial-intelligence-for-hospitality-marketing/", "seo_title": "The Impact of AI on Hospitality Marketing in South Africa | TMSA", "seo_desc": "AI is reshaping hospitality marketing. Explore how artificial intelligence is helping South African guesthouses & lodges improve efficiency and grow bookings.", "focus_kw": ""}, {"id": 14549, "title": "7 Reasons Why Google Analytics is Essential for Your Accommodation Website", "slug": "7-reasons-why-google-analytics-is-essential-for-your-accommodation-website", "url": "https://www.tourismmarketing.co.za/7-reasons-why-google-analytics-is-essential-for-your-accommodation-website/", "seo_title": "7 Reasons Google Analytics Is Essential for Your Accommodation Site", "seo_desc": "Data drives better bookings. 7 reasons every South African guesthouse, lodge & hotel needs Google Analytics to understand and grow their online performance.", "focus_kw": ""}, {"id": 14532, "title": "Innovating for the ).replace('&#8217;', Work from Anywhere&#8217; Target Audience – a Growing Market Segment", "slug": "innovating-for-the-work-from-anywhere-market-segment", "url": "https://www.tourismmarketing.co.za/innovating-for-the-work-from-anywhere-market-segment/", "seo_title": "Marketing to the Work-from-Anywhere Traveller | TMSA", "seo_desc": "Remote work is changing travel patterns. Learn how South African guesthouses & lodges can attract and retain the growing work-from-anywhere market.", "focus_kw": ""}, {"id": 14520, "title": "How to Spring into Summer with your Online Marketing Strategy", "slug": "how-to-spring-into-summer-with-your-online-marketing-strategy", "url": "https://www.tourismmarketing.co.za/how-to-spring-into-summer-with-your-online-marketing-strategy/", "seo_title": "Spring into Summer: Hospitality Marketing Strategy Guide | TMSA", "seo_desc": "Make the most of the summer travel surge. A marketing strategy guide for South African guesthouses & lodges heading into the peak spring-summer season.", "focus_kw": ""}, {"id": 14492, "title": "How to Market your Campsite and Outdoor Accommodation in South Africa", "slug": "how-to-market-your-campsite-and-outdoor-accommodation-in-south-africa", "url": "https://www.tourismmarketing.co.za/how-to-market-your-campsite-and-outdoor-accommodation-in-south-africa/", "seo_title": "How to Market Your Campsite & Outdoor Accommodation in SA | TMSA", "seo_desc": "Outdoor stays need a unique marketing approach. Digital marketing strategies to grow direct bookings for campsites and outdoor accommodation in South Africa.", "focus_kw": ""}, {"id": 14462, "title": "How to Generate Direct Bookings this Winter", "slug": "how-to-generate-direct-bookings-this-winter", "url": "https://www.tourismmarketing.co.za/how-to-generate-direct-bookings-this-winter/", "seo_title": "How to Generate Direct Bookings This Winter | TMSA", "seo_desc": "Winter bookings are there if you know where to look. Proven direct booking strategies for South African guesthouses & lodges to grow revenue in the off-season.", "focus_kw": ""}, {"id": 14434, "title": "How to Use Facebook Marketing & Advertising to Increase Your Direct Bookings (Part 2)", "slug": "use-facebook-marketing-and-advertising-to-increase-direct-bookings-part2", "url": "https://www.tourismmarketing.co.za/use-facebook-marketing-and-advertising-to-increase-direct-bookings-part2/", "seo_title": "Facebook Marketing & Ads to Increase Direct Bookings | TMSA", "seo_desc": "Use Facebook marketing and advertising to drive more direct bookings. A practical guide for South African guesthouses & lodges on Facebook strategy.", "focus_kw": ""}, {"id": 14409, "title": "How to Use Facebook Marketing and Advertising to Increase Your Direct Bookings﻿ (Part 1)", "slug": "use-facebook-marketing-and-advertising-to-increase-direct-bookings", "url": "https://www.tourismmarketing.co.za/use-facebook-marketing-and-advertising-to-increase-direct-bookings/", "seo_title": "Facebook Marketing for Guesthouses: Increase Direct Bookings | TMSA", "seo_desc": "How to use Facebook marketing and advertising effectively for your South African guesthouse or lodge to grow direct bookings and reduce OTA reliance.", "focus_kw": ""}, {"id": 14352, "title": "How to Increase Direct Bookings with Google Hotels", "slug": "how-to-increase-direct-bookings-with-google-hotels", "url": "https://www.tourismmarketing.co.za/how-to-increase-direct-bookings-with-google-hotels/", "seo_title": "How to Increase Direct Bookings with Google Hotels | TMSA", "seo_desc": "Google Hotels is a powerful free tool for accommodation providers. Learn how to optimise your listing and drive more direct bookings for your SA property.", "focus_kw": ""}, {"id": 14342, "title": "5 Online Hospitality Marketing Must Haves", "slug": "5-online-hospitality-marketing-must-haves", "url": "https://www.tourismmarketing.co.za/5-online-hospitality-marketing-must-haves/", "seo_title": "5 Online Hospitality Marketing Must-Haves for SA Accommodation", "seo_desc": "The 5 essential digital marketing elements every South African guesthouse, lodge & boutique hotel needs to improve visibility and grow direct bookings.", "focus_kw": ""}, {"id": 14332, "title": "Your Mobile Site Experience Matters More than Ever!  Here’s Why:", "slug": "you-mobile-site-experience-matters-more-than-ever-heres-why", "url": "https://www.tourismmarketing.co.za/you-mobile-site-experience-matters-more-than-ever-heres-why/", "seo_title": "Why Your Mobile Site Experience Matters More Than Ever | TMSA", "seo_desc": "Over 70% of travellers browse on mobile. Discover why a mobile-friendly website is essential for South African guesthouses & lodges — and how to improve yours.", "focus_kw": ""}, {"id": 14250, "title": "The Benefits of Email Marketing and Why You Should Be Using It", "slug": "the-benefits-of-email-marketing-and-why-you-should-be-using-it", "url": "https://www.tourismmarketing.co.za/the-benefits-of-email-marketing-and-why-you-should-be-using-it/", "seo_title": "The Benefits of Email Marketing for Hospitality Businesses | TMSA", "seo_desc": "Email marketing is one of the most cost-effective channels to drive repeat bookings. Discover why every South African guesthouse & lodge should be using it.", "focus_kw": ""}, {"id": 13989, "title": "Planning for Success in 2021 / Part 3 – Website Trends for 2021", "slug": "planning-for-success-in-2021-part-3-website-trends-for-2021", "url": "https://www.tourismmarketing.co.za/planning-for-success-in-2021-part-3-website-trends-for-2021/", "seo_title": "Website Trends for 2021: Planning for Hospitality Success | TMSA", "seo_desc": "Key website trends for hospitality businesses. Practical advice for South African guesthouses & lodges on optimising their websites for better conversions.", "focus_kw": ""}, {"id": 13984, "title": "Planning for Success in 2021:  Facebook Boosted Posts VS Facebook Advertising", "slug": "planning-for-success-in-2021-facebook-boosted-posts-vs-facebook-advertising", "url": "https://www.tourismmarketing.co.za/planning-for-success-in-2021-facebook-boosted-posts-vs-facebook-advertising/", "seo_title": "Facebook Boosted Posts vs Facebook Ads: Which Is Better? | TMSA", "seo_desc": "Boost or run ads? Break down the differences between Facebook boosted posts and Facebook Ads for South African guesthouses & lodges to get more bookings.", "focus_kw": ""}, {"id": 13978, "title": "Planning for Success in 2021 / 1:  What to Expect from Travel and Tourism Marketing in 2021", "slug": "planning-for-success-in-2021-1-what-to-expect-from-travel-and-tourism-marketing-in-2021", "url": "https://www.tourismmarketing.co.za/planning-for-success-in-2021-1-what-to-expect-from-travel-and-tourism-marketing-in-2021/", "seo_title": "What to Expect from Travel & Tourism in 2021 | TMSA", "seo_desc": "Planning for recovery? Discover travel and tourism trends for 2021 and how South African accommodation providers can adapt their digital marketing strategy.", "focus_kw": ""}, {"id": 13951, "title": "Tips On How To Attract Local Guests Back After a Lockdown", "slug": "tips-on-how-to-attract-local-guests-back-after-a-lockdown", "url": "https://www.tourismmarketing.co.za/tips-on-how-to-attract-local-guests-back-after-a-lockdown/", "seo_title": "How to Attract Local Guests Back After Lockdown | TMSA", "seo_desc": "With international travel restricted, local guests were key. Tips for South African guesthouses & lodges to attract domestic travellers and rebuild occupancy.", "focus_kw": ""}, {"id": 13939, "title": "How To Manage Online Reviews During the Covid-19 Pandemic", "slug": "how-to-manage-online-review-during-the-covid-19-pandemic", "url": "https://www.tourismmarketing.co.za/how-to-manage-online-review-during-the-covid-19-pandemic/", "seo_title": "How to Manage Online Reviews During Covid-19 | TMSA", "seo_desc": "Online reputation doesn't pause during a crisis. Learn how South African guesthouses & lodges can manage guest reviews and protect their brand during Covid-19.", "focus_kw": ""}, {"id": 13932, "title": "5 Tips on How to Communicate with Guests During Lockdown", "slug": "5-tips-on-how-to-communicate-with-guests-during-lockdown", "url": "https://www.tourismmarketing.co.za/5-tips-on-how-to-communicate-with-guests-during-lockdown/", "seo_title": "5 Tips to Communicate with Guests During Lockdown | TMSA", "seo_desc": "Keeping guests informed during lockdown builds trust and future bookings. 5 tips for South African hospitality businesses on guest communication during Covid-19.", "focus_kw": ""}, {"id": 13924, "title": "5 Post Covid-19 Travel Trends to Watch Out For", "slug": "5-post-covid-19-travel-trends-to-watch-out-for", "url": "https://www.tourismmarketing.co.za/5-post-covid-19-travel-trends-to-watch-out-for/", "seo_title": "5 Post Covid-19 Travel Trends for South Africa | TMSA", "seo_desc": "Covid-19 reshaped travel forever. Discover 5 post-pandemic travel trends South African guesthouses & lodges need to understand to adapt their marketing.", "focus_kw": ""}, {"id": 13915, "title": "5 Savvy Ways to Attract Business Travellers", "slug": "5-savvy-ways-to-attract-business-travellers", "url": "https://www.tourismmarketing.co.za/5-savvy-ways-to-attract-business-travellers/", "seo_title": "5 Savvy Ways to Attract Business Travellers to Your Property | TMSA", "seo_desc": "Business travellers book direct and stay longer. Discover 5 ways South African guesthouses & lodges can attract corporate guests and grow mid-week occupancy.", "focus_kw": ""}, {"id": 13907, "title": "5  Ways to Repackage Tourism Services in the Covid-19 Era", "slug": "5-ways-to-repackage-tourism-services-in-the-covid-19-era", "url": "https://www.tourismmarketing.co.za/5-ways-to-repackage-tourism-services-in-the-covid-19-era/", "seo_title": "5 Ways to Repackage Your Tourism Services Post-Covid | TMSA", "seo_desc": "Adapt your offering and stay competitive. 5 practical ideas for South African accommodation providers to repackage tourism services for the post-Covid market.", "focus_kw": ""}, {"id": 13892, "title": "Creative Ideas on Marketing Your Establishment Locally Post Covid-19", "slug": "creative-ideas-on-marketing-your-establishment-locally-post-covid-19", "url": "https://www.tourismmarketing.co.za/creative-ideas-on-marketing-your-establishment-locally-post-covid-19/", "seo_title": "How to Market Your Property to Local Guests Post Covid-19 | TMSA", "seo_desc": "Local tourism was a lifeline post-Covid. Creative marketing ideas to help South African guesthouses & lodges attract domestic guests and rebuild occupancy.", "focus_kw": ""}, {"id": 13870, "title": "3 Steps to dealing with Social Media during Covid-19 Lockdown", "slug": "3-steps-to-dealing-with-social-media-during-covid-19-lockdown", "url": "https://www.tourismmarketing.co.za/3-steps-to-dealing-with-social-media-during-covid-19-lockdown/", "seo_title": "3 Steps to Managing Social Media During Covid-19 Lockdown | TMSA", "seo_desc": "Don't go silent during a crisis. A 3-step guide for South African hospitality businesses to manage social media presence during Covid-19 lockdown.", "focus_kw": ""}, {"id": 13866, "title": "7 Tips On How Your Establishment Can Survive Covid-19", "slug": "7-tips-on-how-your-establishment-can-survive-covid-19", "url": "https://www.tourismmarketing.co.za/7-tips-on-how-your-establishment-can-survive-covid-19/", "seo_title": "7 Tips to Help Your Guesthouse Survive Covid-19 | TMSA", "seo_desc": "7 practical tips to help South African guesthouses, lodges & boutique hotels survive the Covid-19 crisis and prepare for the recovery ahead.", "focus_kw": ""}, {"id": 13837, "title": "3 Ways How Social Media has Transformed Travel Marketing", "slug": "3-ways-how-social-media-has-transformed-travel-marketing", "url": "https://www.tourismmarketing.co.za/3-ways-how-social-media-has-transformed-travel-marketing/", "seo_title": "3 Ways Social Media Has Transformed Travel Marketing | TMSA", "seo_desc": "Social media changed how travellers discover and book stays. Discover 3 ways it has transformed travel marketing for South African hospitality businesses.", "focus_kw": ""}, {"id": 13828, "title": "4 Reasons Why You Should Update Your Website", "slug": "4-reasons-why-you-should-update-your-website", "url": "https://www.tourismmarketing.co.za/4-reasons-why-you-should-update-your-website/", "seo_title": "4 Reasons to Update Your Guesthouse Website | TMSA", "seo_desc": "An outdated website costs you bookings. 4 compelling reasons South African guesthouses & lodges should invest in updating their website to grow direct bookings.", "focus_kw": ""}, {"id": 13822, "title": "Your 3 Step Guide to Creating the Ultimate Valentine’s Special", "slug": "your-3-step-guide-to-creating-the-ultimate-valentines-special", "url": "https://www.tourismmarketing.co.za/your-3-step-guide-to-creating-the-ultimate-valentines-special/", "seo_title": "How to Create the Ultimate Valentine's Day Special | TMSA", "seo_desc": "Valentine's Day drives big bookings. A 3-step guide for South African guesthouses & lodges to create compelling Valentine's packages that sell out fast.", "focus_kw": ""}, {"id": 11040, "title": "Cycling Tourism on the up Worldwide – South Africa is gearing up", "slug": "cycling-tourism-on-the-up-worldwide-and-south-africa-is-gearing-up", "url": "https://www.tourismmarketing.co.za/cycling-tourism-on-the-up-worldwide-and-south-africa-is-gearing-up/", "seo_title": "Cycling Tourism in South Africa: Opportunities for Accommodation", "seo_desc": "Cycling tourism is booming worldwide and South Africa is gearing up. Discover how accommodation providers can attract the growing cycling tourism market.", "focus_kw": ""}, {"id": 11041, "title": "Bigger, better and meatier Hantam Meat Festival a must for everyone", "slug": "bigger-better-and-meatier-hantam-meat-festival-a-must-for-everyone", "url": "https://www.tourismmarketing.co.za/bigger-better-and-meatier-hantam-meat-festival-a-must-for-everyone/", "seo_title": "Hantam Meat Festival: A Must-Visit Event in South Africa | TMSA", "seo_desc": "The Hantam Meat Festival is bigger and better than ever. Discover why this popular South African event is a must-visit for food lovers and tourism operators.", "focus_kw": ""}, {"id": 11006, "title": "How to Run Your Business Email through your Gmail account", "slug": "how-to-run-your-business-email-through-your-gmail-account", "url": "https://www.tourismmarketing.co.za/how-to-run-your-business-email-through-your-gmail-account/", "seo_title": "How to Run Your Business Email Through Gmail | TMSA", "seo_desc": "Connect your business email to Gmail for your guesthouse or lodge. Keep your professional domain email while using Google's familiar, easy-to-use interface.", "focus_kw": ""}, {"id": 10726, "title": "5 Guest House Marketing Tips to help Improve your Off Season Occupancy", "slug": "5-guest-house-marketing-tips-to-help-improve-your-offseason-occupancy", "url": "https://www.tourismmarketing.co.za/5-guest-house-marketing-tips-to-help-improve-your-offseason-occupancy/", "seo_title": "5 Guest House Marketing Tips to Improve Off-Season Occupancy | TMSA", "seo_desc": "Off-season doesn't mean empty rooms. 5 proven marketing tips to help South African guest house owners improve occupancy during the quiet months.", "focus_kw": ""}, {"id": 10705, "title": "Great News from Google!", "slug": "great-news-from-google", "url": "https://www.tourismmarketing.co.za/great-news-from-google/", "seo_title": "", "seo_desc": "", "focus_kw": ""}, {"id": 10678, "title": "How to get ready for the Google+ Shutdown", "slug": "how-to-get-ready-for-the-google-shutdown", "url": "https://www.tourismmarketing.co.za/how-to-get-ready-for-the-google-shutdown/", "seo_title": "", "seo_desc": "", "focus_kw": ""}, {"id": 10595, "title": "Why does Google want my Website to be SSL secure?", "slug": "why-does-google-want-my-site-to-be-ssl-secure", "url": "https://www.tourismmarketing.co.za/why-does-google-want-my-site-to-be-ssl-secure/", "seo_title": "Why Google Wants Your Website to Be SSL Secure | TMSA", "seo_desc": "Google penalises non-secure websites in search rankings. Learn why SSL security is essential for South African guesthouse & lodge websites and how to get it.", "focus_kw": ""}, {"id": 10486, "title": "Handy tips on Increasing Occupancy during Off-Season", "slug": "handy-tips-on-increasing-occupancy-during-off-season", "url": "https://www.tourismmarketing.co.za/handy-tips-on-increasing-occupancy-during-off-season/", "seo_title": "Handy Tips on Increasing Occupancy During the Off-Season | TMSA", "seo_desc": "Practical tips for South African guesthouses & lodges to increase occupancy during the off-season and maintain steady revenue throughout the year.", "focus_kw": ""}, {"id": 1515, "title": "How to promote your Guest House for Valentine’s Day", "slug": "promote-guest-house-valentines-day", "url": "https://www.tourismmarketing.co.za/promote-guest-house-valentines-day/", "seo_title": "How to Promote Your Guest House for Valentine's Day | TMSA", "seo_desc": "Valentine's Day is a major booking opportunity. Tips for South African guesthouses to promote romantic stays and create compelling Valentine's Day specials.", "focus_kw": ""}, {"id": 1468, "title": "An Easy Guide to Best Practice in Sustainable Tourism – Part One", "slug": "easy-guide-best-practice-sustainable-tourism-part-one", "url": "https://www.tourismmarketing.co.za/easy-guide-best-practice-sustainable-tourism-part-one/", "seo_title": "Best Practice in Sustainable Tourism: A Beginner's Guide | TMSA", "seo_desc": "A beginner's guide to sustainable tourism for South African accommodation providers. Part One: understanding sustainability principles in hospitality.", "focus_kw": ""}, {"id": 1451, "title": "What is Sustainable Tourism and Why is it Important?", "slug": "sustainable-tourism-important", "url": "https://www.tourismmarketing.co.za/sustainable-tourism-important/", "seo_title": "What Is Sustainable Tourism and Why Does It Matter? | TMSA", "seo_desc": "Sustainable tourism is now a guest expectation. Understand what it means and why it matters for South African accommodation providers and hospitality businesses.", "focus_kw": ""}, {"id": 1402, "title": "27 Reasons To Visit South Africa", "slug": "27-reasons-visit-south-africa", "url": "https://www.tourismmarketing.co.za/27-reasons-visit-south-africa/", "seo_title": "27 Reasons to Visit South Africa | Tourism Marketing SA", "seo_desc": "South Africa is one of the world's most extraordinary travel destinations. Discover 27 compelling reasons to make South Africa your next holiday destination.", "focus_kw": ""}, {"id": 1341, "title": "Why POPI is Important to your Guest House?", "slug": "popi-important-guest-house", "url": "https://www.tourismmarketing.co.za/popi-important-guest-house/", "seo_title": "Why POPI Compliance Is Important for Your Guest House | TMSA", "seo_desc": "POPI Act compliance is not optional for SA businesses. Understand what it means for your guesthouse or lodge and how to protect your guest data correctly.", "focus_kw": ""}, {"id": 1327, "title": "How to Manage your Online Reviews and why it’s Important", "slug": "manage-online-reviews-important", "url": "https://www.tourismmarketing.co.za/manage-online-reviews-important/", "seo_title": "How to Manage Online Reviews & Why It Matters | TMSA", "seo_desc": "Your online reputation directly impacts bookings. A guide for South African guesthouses & lodges on managing reviews effectively across major platforms.", "focus_kw": ""}, {"id": 1310, "title": "Do Hotel Rating Schemes still hold Value?", "slug": "hotel-rating-schemes-still-hold-value", "url": "https://www.tourismmarketing.co.za/hotel-rating-schemes-still-hold-value/", "seo_title": "Do Hotel Rating Schemes Still Hold Value? | TMSA", "seo_desc": "Do star ratings still influence booking decisions? Explore whether hotel and guesthouse rating schemes remain relevant in the age of Google Reviews & TripAdvisor.", "focus_kw": ""}, {"id": 1270, "title": "5 Reasons why your Guest House needs a Mobile friendly website?", "slug": "guest-house-mobile-friendly-website", "url": "https://www.tourismmarketing.co.za/guest-house-mobile-friendly-website/", "seo_title": "5 Reasons Your Guest House Needs a Mobile-Friendly Website | TMSA", "seo_desc": "Most travellers browse accommodation on their phones. Here's why a mobile-friendly website is no longer optional for South African guesthouses and lodges.", "focus_kw": ""}, {"id": 1262, "title": "How to Manage your Online Reviews Successfully", "slug": "manage-online-reviews-successfully", "url": "https://www.tourismmarketing.co.za/manage-online-reviews-successfully/", "seo_title": "How to Manage Your Online Reviews Successfully | TMSA", "seo_desc": "Online reviews can make or break your bookings. A practical guide for South African guesthouses & lodges to manage reviews and build a 5-star reputation.", "focus_kw": ""}, {"id": 1241, "title": "The Basic Steps to Getting Started with SEO", "slug": "basic-steps-getting-started-seo", "url": "https://www.tourismmarketing.co.za/basic-steps-getting-started-seo/", "seo_title": "The Basic Steps to Getting Started with SEO | TMSA", "seo_desc": "New to SEO? This beginner's guide breaks down the key steps to improve your guesthouse or lodge's Google visibility and attract more organic bookings.", "focus_kw": ""}, {"id": 1207, "title": "Booking and Guest Management Systems on Your Website", "slug": "booking-guest-management-systems-website", "url": "https://www.tourismmarketing.co.za/booking-guest-management-systems-website/", "seo_title": "Booking & Guest Management Systems for Your Website | TMSA", "seo_desc": "The right booking system can dramatically increase direct bookings. A guide for South African guesthouses & lodges on choosing the best booking management software.", "focus_kw": ""}, {"id": 1192, "title": "Getting a website?  DIY, Free and Low-Cost Website Options:  Why it’s a really bad idea!", "slug": "getting-website-diy-free-low-cost-website-options-really-bad-idea", "url": "https://www.tourismmarketing.co.za/getting-website-diy-free-low-cost-website-options-really-bad-idea/", "seo_title": "DIY Websites vs Professional Design: What's Best for Your Property?", "seo_desc": "Thinking of building your own website? Find out why DIY and low-cost options often cost South African guesthouses & lodges more in lost bookings long-term.", "focus_kw": ""}, {"id": 1167, "title": "PR & Marketing Tips for Smaller Businesses in the Hospitality Industry", "slug": "pr-marketing-tips-smaller-businesses-hospitality-industry", "url": "https://www.tourismmarketing.co.za/pr-marketing-tips-smaller-businesses-hospitality-industry/", "seo_title": "PR & Marketing Tips for Smaller Hospitality Businesses | TMSA", "seo_desc": "Small hospitality businesses can compete with big hotels. Practical PR and marketing tips for South African guesthouses, lodges & B&Bs to grow their profile.", "focus_kw": ""}, {"id": 1162, "title": "5 Unavoidable Trends in Tourism Marketing for 2017", "slug": "5-unavoidable-trends-in-tourism-marketing-for-2017", "url": "https://www.tourismmarketing.co.za/5-unavoidable-trends-in-tourism-marketing-for-2017/", "seo_title": "5 Tourism Marketing Trends That Shaped the Industry | TMSA", "seo_desc": "Key tourism marketing trends that continue to influence how South African guesthouses & lodges market themselves online and attract more direct bookings.", "focus_kw": "website design"}, {"id": 1146, "title": "Your website and how it should work for you", "slug": "your-website-and-how-it-should-work-for-you", "url": "https://www.tourismmarketing.co.za/your-website-and-how-it-should-work-for-you/", "seo_title": "Your Website and How It Should Work for Your Guesthouse | TMSA", "seo_desc": "Your website is your best direct booking tool — but only if it works correctly. Learn what a high-performing guesthouse website should deliver for your business.", "focus_kw": "website design"}, {"id": 1072, "title": "The importance of Photography to your AirBnB listing", "slug": "importance-photography-sell-airbnb-listing", "url": "https://www.tourismmarketing.co.za/importance-photography-sell-airbnb-listing/", "seo_title": "The Importance of Photography for Your AirBnB Listing | TMSA", "seo_desc": "Great photography is the #1 factor in AirBnB listing performance. Discover why professional photos are essential for South African accommodation hosts.", "focus_kw": "airbnb marketing"}, {"id": 1044, "title": "The Reasons Why Online Marketing is More Important Than Ever", "slug": "reasons-online-marketing-important-ever", "url": "https://www.tourismmarketing.co.za/reasons-online-marketing-important-ever/", "seo_title": "Why Online Marketing Is More Important Than Ever for Hospitality", "seo_desc": "Digital marketing is essential for accommodation providers today. Discover why online marketing is critical for South African guesthouses, lodges & hotels.", "focus_kw": ""}, {"id": 1017, "title": "Top Ten Benefits You’ll See When You Claim Your Business Online", "slug": "top-ten-benefits-youll-see-claim-business-online", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-youll-see-claim-business-online/", "seo_title": "Top 10 Benefits of Claiming Your Business Online | TMSA", "seo_desc": "Claiming your business on Google, TripAdvisor and other platforms is free and powerful. Top 10 benefits for South African guesthouses & accommodation providers.", "focus_kw": ""}, {"id": 993, "title": "Top Ten Benefits of Content Marketing", "slug": "top-ten-benefits-content-marketing", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-content-marketing/", "seo_title": "Top 10 Benefits of Content Marketing for Hospitality | TMSA", "seo_desc": "Content marketing builds trust and drives organic bookings. Top 10 benefits of a content strategy for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 986, "title": "The Top Ten Reasons why you should be using Google Adwords", "slug": "top-ten-reasons-using-google-adwords", "url": "https://www.tourismmarketing.co.za/top-ten-reasons-using-google-adwords/", "seo_title": "Top 10 Reasons to Use Google Ads for Your Guesthouse | TMSA", "seo_desc": "Google Ads puts your property in front of travellers actively searching to book. Top 10 reasons South African guesthouses & lodges should be using Google Ads.", "focus_kw": ""}, {"id": 968, "title": "Top Ten Reasons why you need SEO", "slug": "top-ten-reasons-need-seo", "url": "https://www.tourismmarketing.co.za/top-ten-reasons-need-seo/", "seo_title": "Top 10 Reasons Your Guesthouse Needs SEO | TMSA", "seo_desc": "SEO is the most cost-effective way to grow organic bookings long-term. Discover the top 10 reasons SEO is essential for South African guesthouses & lodges.", "focus_kw": ""}, {"id": 960, "title": "Top Ten Benefits of an E Newsletter", "slug": "top-ten-benefits-e-newsletter", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-e-newsletter/", "seo_title": "Top 10 Benefits of an Email Newsletter for Your Guesthouse | TMSA", "seo_desc": "A regular email newsletter is one of the most effective ways to drive repeat bookings. Top 10 benefits for South African hospitality businesses.", "focus_kw": ""}, {"id": 955, "title": "Top 10 Benefits of a Facebook Business Page", "slug": "top-10-benefits-facebook-business-page", "url": "https://www.tourismmarketing.co.za/top-10-benefits-facebook-business-page/", "seo_title": "Top 10 Benefits of a Facebook Business Page for Hospitality | TMSA", "seo_desc": "A Facebook Business Page is a powerful free tool for accommodation providers. Top 10 benefits for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 949, "title": "Top Ten Benefits of Social Media Marketing", "slug": "top-ten-benefits-social-media-marketing", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-social-media-marketing/", "seo_title": "Top 10 Benefits of Social Media Marketing for Hospitality | TMSA", "seo_desc": "Social media is one of the most powerful tools for hospitality marketing. Top 10 benefits for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 931, "title": "Top Ten Benefits of Quality Web Design", "slug": "top-ten-benefits-quality-web-design", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-quality-web-design/", "seo_title": "Top 10 Benefits of Quality Website Design for Guesthouses | TMSA", "seo_desc": "A well-designed website is your most powerful direct booking tool. Top 10 benefits of quality web design for South African guesthouses, lodges & hotels.", "focus_kw": ""}, {"id": 826, "title": "Top Ten Benefits of Digital Marketing vs Traditional Marketing", "slug": "top-ten-benefits-digital-marketing-vs-traditional-marketing", "url": "https://www.tourismmarketing.co.za/top-ten-benefits-digital-marketing-vs-traditional-marketing/", "seo_title": "Digital Marketing vs Traditional Marketing for Hospitality | TMSA", "seo_desc": "Should your guesthouse still invest in traditional marketing? Discover the key advantages of digital vs traditional marketing for South African hospitality.", "focus_kw": ""}, {"id": 722, "title": "Tourism Marketing SA partners with 5 star photography company Lodge Shots", "slug": "partner-lodge-shots", "url": "https://www.tourismmarketing.co.za/partner-lodge-shots/", "seo_title": "How Photography Drives More Guesthouse & Lodge Bookings", "seo_desc": "Listings with photos receive 225% more booking enquiries. TMSA has partnered with Lodge Shots to offer professional hospitality photography for South African guesthouses and lodges.", "focus_kw": ""}, {"id": 653, "title": "Réunion Island – Expect the unexpected.", "slug": "reunion-island-expect-the-unexpected", "url": "https://www.tourismmarketing.co.za/reunion-island-expect-the-unexpected/", "seo_title": "Réunion Island: Expect the Unexpected – An MTB Adventure", "seo_desc": "An extraordinary MTB adventure on Réunion Island — cycling up an active volcano at 2,354m, exploring lush rainforests and pristine beaches in the Indian Ocean.", "focus_kw": ""}, {"id": 639, "title": "We are going on an Adventure!!", "slug": "reunion-mtb-adventure", "url": "https://www.tourismmarketing.co.za/reunion-mtb-adventure/", "seo_title": "Adventure Travel to Réunion Island: TMSA Goes MTB Riding", "seo_desc": "TMSA joins adventure travel specialist ATR to test a new MTB holiday on Réunion Island. Follow our team as we explore this extraordinary Indian Ocean adventure destination.", "focus_kw": ""}, {"id": 511, "title": "Social Media – A powerful tool for marketing", "slug": "social-media-a-powerful-tool-for-marketing", "url": "https://www.tourismmarketing.co.za/social-media-a-powerful-tool-for-marketing/", "seo_title": "Social Media: A Powerful Marketing Tool for Hospitality | TMSA", "seo_desc": "Social media has transformed how travellers discover and book accommodation. Learn how South African guesthouses & lodges can harness its power to grow bookings.", "focus_kw": ""}, {"id": 509, "title": "How to Boost your Direct Bookings", "slug": "how-to-boost-your-direct-bookings", "url": "https://www.tourismmarketing.co.za/how-to-boost-your-direct-bookings/", "seo_title": "How to Boost Your Direct Bookings | Tourism Marketing SA", "seo_desc": "More direct bookings mean more revenue and less OTA commission. Proven strategies for South African guesthouses & lodges to drive direct bookings online.", "focus_kw": ""}, {"id": 507, "title": "Introduction to Branding in the Hospitality Industry", "slug": "introduction-to-branding-in-the-hospitality-industry", "url": "https://www.tourismmarketing.co.za/introduction-to-branding-in-the-hospitality-industry/", "seo_title": "Introduction to Branding in the Hospitality Industry | TMSA", "seo_desc": "Your brand is more than a logo. An introduction to brand strategy for South African hospitality businesses — what it is and why it drives guest loyalty.", "focus_kw": ""}, {"id": 505, "title": "Establishment brand promises", "slug": "establishment-brand-promises", "url": "https://www.tourismmarketing.co.za/establishment-brand-promises/", "seo_title": "Establishment Brand Promises in Hospitality | TMSA", "seo_desc": "A brand promise defines what guests expect every time. Learn how South African guesthouses & lodges can build authentic brand promises that drive loyalty.", "focus_kw": ""}, {"id": 500, "title": "How to Increase Direct Bookings through your establishment’s website", "slug": "how-to-increase-direct-bookings-through-your-establishments-website", "url": "https://www.tourismmarketing.co.za/how-to-increase-direct-bookings-through-your-establishments-website/", "seo_title": "How to Increase Direct Bookings Through Your Website | TMSA", "seo_desc": "Your website should be your best booking channel. Practical tips to increase direct bookings through your guesthouse, lodge or hotel website in South Africa.", "focus_kw": ""}, {"id": 477, "title": "Urgency gets People to Book", "slug": "urgency-gets-people-to-book", "url": "https://www.tourismmarketing.co.za/urgency-gets-people-to-book/", "seo_title": "How to Use Urgency to Get More Bookings | TMSA", "seo_desc": "Urgency is a powerful conversion tool. Learn how South African guesthouses & lodges can use urgency techniques to encourage faster booking decisions online.", "focus_kw": ""}, {"id": 475, "title": "8 Ways to Convince Visitors to Click the Book Now Button", "slug": "8-ways-to-convince-visitors-to-click-the-book-now-button", "url": "https://www.tourismmarketing.co.za/8-ways-to-convince-visitors-to-click-the-book-now-button/", "seo_title": "8 Ways to Convince Website Visitors to Click Book Now | TMSA", "seo_desc": "Getting traffic is only half the battle. Discover 8 proven ways to convince South African guesthouse & lodge visitors to make a direct booking on your site.", "focus_kw": ""}, {"id": 473, "title": "3 Free Ways to Capture Leads on Your Hotel, B&B, or Guest House Website", "slug": "3-free-ways-to-capture-leads-on-your-website", "url": "https://www.tourismmarketing.co.za/3-free-ways-to-capture-leads-on-your-website/", "seo_title": "3 Free Ways to Capture Guest Leads on Your Website | TMSA", "seo_desc": "Build your guest database for free. 3 lead capture strategies every South African guesthouse, B&B & hotel should be using on their website right now.", "focus_kw": ""}, {"id": 466, "title": "3 Contact Us Tricks to Get More Bookings", "slug": "3-contact-us-tricks-to-get-more-bookings", "url": "https://www.tourismmarketing.co.za/3-contact-us-tricks-to-get-more-bookings/", "seo_title": "3 Contact Page Tricks to Get More Bookings | TMSA", "seo_desc": "Your contact page could be costing you bookings. 3 simple tricks to optimise your guesthouse contact page and convert more visitors into confirmed guests.", "focus_kw": ""}, {"id": 459, "title": "How to optimize your Establishment&#8217;s Website", "slug": "how-to-optimize-your-establishments-website", "url": "https://www.tourismmarketing.co.za/how-to-optimize-your-establishments-website/", "seo_title": "How to Optimise Your Accommodation Website for More Bookings | TMSA", "seo_desc": "Website optimisation grows direct bookings without increasing ad spend. A practical guide for South African guesthouses, lodges & boutique hotels.", "focus_kw": ""}, {"id": 14850, "title": "Blog Test Headings – 2025 Social Media Trends", "slug": "blog-test-headings", "url": "https://www.tourismmarketing.co.za/blog-test-headings/", "seo_title": "", "seo_desc": "", "focus_kw": ""}];
+
+let currentTab = 'pages';
+let currentQ   = 'all';
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function gradeBadge(text, kind) {
+  if (!text || !text.trim()) return ['missing','Missing'];
+  const n = text.length;
+  if (kind === 'title') {
+    if (n >= 50 && n <= 60) return ['good', n+'c'];
+    if (n >= 45 && n <= 65) return ['ok',   n+'c'];
+    return                         ['warn',  n+'c'];
+  } else {
+    if (n >= 150 && n <= 160) return ['good', n+'c'];
+    if (n >= 140 && n <= 170) return ['ok',   n+'c'];
+    return                           ['warn',  n+'c'];
+  }
+}
+
+function overallGrade(item) {
+  const [tg] = gradeBadge(item.seo_title, 'title');
+  const [dg] = gradeBadge(item.seo_desc,  'desc');
+  if (tg === 'missing' || dg === 'missing') return 'missing';
+  if (tg === 'warn'    || dg === 'warn')    return 'warn';
+  if (tg === 'ok'      || dg === 'ok')      return 'ok';
+  return 'good';
+}
+
+function renderItem(item) {
+  const [tGrade, tLabel] = gradeBadge(item.seo_title, 'title');
+  const [dGrade, dLabel] = gradeBadge(item.seo_desc,  'desc');
+  const overall = overallGrade(item);
+
+  const urlDisplay = item.url.replace('https://www.tourismmarketing.co.za','').replace(/^\//,'') || '/';
+
+  const titleText = item.seo_title
+    ? `<span class="field-text">${esc(item.seo_title)}</span>`
+    : `<span class="field-text empty">Not set &mdash; will inherit post title</span>`;
+
+  const descText  = item.seo_desc
+    ? `<span class="field-text">${esc(item.seo_desc)}</span>`
+    : `<span class="field-text empty">No meta description set</span>`;
+
+  const kwHtml = item.focus_kw
+    ? `<div class="field-kw">Focus KW: <span class="kw-tag">${esc(item.focus_kw)}</span></div>`
+    : '';
+
+  return `
+    <div class="item-card"
+      data-q="${overall}"
+      data-search="${esc((item.title+' '+item.url+' '+(item.seo_title||'')+' '+(item.focus_kw||'')).toLowerCase())}">
+      <div class="item-card-inner">
+        <div class="item-identity">
+          <div class="item-name">${esc(item.title)}</div>
+          <a class="item-url" href="${esc(item.url)}" target="_blank">${esc(urlDisplay) || '/'}</a>
+          <div class="item-id">ID ${esc(String(item.id))}</div>
+        </div>
+        <div class="item-field">
+          <div class="field-header">
+            <span class="field-name">Title Tag</span>
+            <span class="badge badge-${tGrade}">${tLabel}</span>
+          </div>
+          ${titleText}
+        </div>
+        <div class="item-field">
+          <div class="field-header">
+            <span class="field-name">Meta Description</span>
+            <span class="badge badge-${dGrade}">${dLabel}</span>
+          </div>
+          ${descText}
+          ${kwHtml}
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderList(items, listId, nrId) {
+  document.getElementById(listId).innerHTML = items.map(renderItem).join('');
+  applyFilters();
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i===0 && tab==='pages') || (i===1 && tab==='posts'));
+  });
+  document.getElementById('panel-pages').classList.toggle('active', tab==='pages');
+  document.getElementById('panel-posts').classList.toggle('active', tab==='posts');
+  applyFilters();
+}
+
+function setQ(q) {
+  currentQ = q;
+  document.querySelectorAll('.qbtn').forEach(b => {
+    b.classList.toggle('active', b.dataset.q === q);
+  });
+  applyFilters();
+}
+
+function applyFilters() {
+  const q      = document.getElementById('search').value.toLowerCase().trim();
+  const listId = currentTab === 'pages' ? 'list-pages' : 'list-posts';
+  const nrId   = currentTab === 'pages' ? 'nr-pages'   : 'nr-posts';
+  const cards  = document.getElementById(listId).querySelectorAll('.item-card');
+  let visible  = 0;
+  cards.forEach(c => {
+    const matchQ = currentQ === 'all' || c.dataset.q === currentQ;
+    const matchS = !q || c.dataset.search.includes(q);
+    const show   = matchQ && matchS;
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById(nrId).style.display = visible === 0 ? '' : 'none';
+}
+
+// Render on load
+renderList(PAGES_DATA, 'list-pages', 'nr-pages');
+renderList(POSTS_DATA, 'list-posts', 'nr-posts');
+</script>
+</body>
+</html>
