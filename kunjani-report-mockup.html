@@ -3,35 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEO Report Mockup — Kunjani Villas & Wines</title>
+  <title>SEO Report Mockup — Kunjani Villas &amp; Wines</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     :root {
-      --orange:   #FF6B35;
-      --orange-d: #E05520;
-      --orange-l: #FFF1EB;
-      --blue:     #4A90D9;
-      --green:    #27AE60;
-      --amber:    #F39C12;
-      --purple:   #8E44AD;
-      --red:      #E74C3C;
+      --orange:   #EA580C;
+      --orange-d: #C2440A;
+      --orange-l: #FFF0E8;
+      --blue:     #2563EB;
+      --green:    #16A34A;
+      --amber:    #D97706;
+      --purple:   #7C3AED;
+      --red:      #DC2626;
+      --grey-pill:#6B7280;
       --bg:       #f0f2f5;
       --card:     #ffffff;
       --border:   #e4e7eb;
       --text:     #1a1a2e;
       --muted:    #6c757d;
-      --good-bg:  #EAFAF1; --good-text: #1a6b3a; --good-bd: #a9ddb9;
-      --ok-bg:    #FEF9E7; --ok-text:   #7a5c0a; --ok-bd:   #f0d87a;
-      --warn-bg:  #FDEDEC; --warn-text: #9b2a1a; --warn-bd: #f2b0a8;
-      --miss-bg:  #F2F3F4; --miss-text: #5a5a6a; --miss-bd: #c8ccd4;
       --radius:   12px;
       --shadow:   0 2px 8px rgba(0,0,0,0.08);
       --shadow-md:0 4px 16px rgba(0,0,0,0.11);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
@@ -43,7 +41,7 @@
     /* ── Hero ── */
     .hero {
       background:
-        linear-gradient(150deg, rgba(10,6,2,0.62) 0%, rgba(20,12,4,0.52) 60%, rgba(30,18,6,0.44) 100%),
+        linear-gradient(150deg, rgba(10,6,2,0.68) 0%, rgba(20,12,4,0.56) 60%, rgba(30,18,6,0.48) 100%),
         url("https://kunjani-villas.co.za/wp-content/uploads/2025/10/kunjani-villas-and-wines-building-exterior-stellenbosch.webp") center / cover no-repeat;
       border-bottom: 3px solid var(--orange);
       padding: 72px 48px 60px;
@@ -52,8 +50,8 @@
     .hero-inner { max-width: 1200px; margin: 0 auto; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,107,53,0.18);
-      border: 1px solid rgba(255,107,53,0.40);
+      background: rgba(234,88,12,0.20);
+      border: 1px solid rgba(234,88,12,0.45);
       border-radius: 6px; padding: 5px 14px;
       font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
       color: rgba(255,255,255,0.85); margin-bottom: 20px;
@@ -66,52 +64,57 @@
       font-size: 38px; font-weight: 800; letter-spacing: 0.5px;
       text-transform: uppercase; margin-bottom: 6px;
     }
+    /* Enhancement 1 — bigger, bolder subtitle */
     .hero-sub {
-      font-size: 13px; letter-spacing: 0.5px;
-      color: rgba(255,255,255,0.50); text-transform: uppercase; margin-bottom: 32px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.90);
+      text-transform: uppercase;
+      margin-top: 10px;
+      margin-bottom: 28px;
     }
     .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
     .chip {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
       border-radius: 6px; padding: 5px 14px;
-      font-size: 11px; color: rgba(255,255,255,0.60);
+      font-size: 11px; color: rgba(255,255,255,0.65);
     }
     .chip strong { color: rgba(255,255,255,0.92); font-weight: 600; }
     .hero-intro {
       max-width: 660px; font-size: 15px; line-height: 1.75;
-      color: rgba(255,255,255,0.70);
-      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.72);
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14);
     }
 
-    /* ── KPI cards ── */
+    /* ── KPI cards — solid coloured background, white text ── */
     .kpi-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 14px; max-width: 1200px;
-      margin: -28px auto 0; padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      max-width: 1200px;
+      margin: -28px auto 0;
+      padding: 0 48px;
     }
     .kpi {
-      background: var(--card); border-radius: var(--radius);
-      box-shadow: var(--shadow); padding: 22px 20px 18px;
-      border-top: 3px solid var(--blue);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 22px 20px 18px;
+      color: #fff;
     }
-    .kpi.c-blue   { border-top-color: var(--blue); }
-    .kpi.c-purple { border-top-color: var(--purple); }
-    .kpi.c-amber  { border-top-color: var(--amber); }
-    .kpi.c-green  { border-top-color: var(--green); }
-    .kpi.c-red    { border-top-color: var(--red); }
-    .kpi-icon { font-size: 18px; margin-bottom: 10px; opacity: 0.75; }
+    .kpi.c-blue   { background: var(--blue); }
+    .kpi.c-purple { background: var(--purple); }
+    .kpi.c-amber  { background: var(--amber); }
+    .kpi.c-green  { background: var(--green); }
+    .kpi.c-red    { background: var(--red); }
+    .kpi-icon { font-size: 20px; margin-bottom: 10px; opacity: 0.85; }
     .kpi-num {
       font-size: 38px; font-weight: 800; line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 6px; color: #fff;
     }
-    .kpi.c-blue   .kpi-num { color: var(--blue); }
-    .kpi.c-purple .kpi-num { color: var(--purple); }
-    .kpi.c-amber  .kpi-num { color: var(--amber); }
-    .kpi.c-green  .kpi-num { color: var(--green); }
-    .kpi.c-red    .kpi-num { color: var(--red); }
     .kpi-label {
       font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
-      text-transform: uppercase; color: var(--muted);
+      text-transform: uppercase; color: rgba(255,255,255,0.80);
     }
 
     /* ── Wrap ── */
@@ -131,7 +134,7 @@
       font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
       text-transform: uppercase; color: var(--muted);
     }
-    .chart-wrap { width: 140px; height: 140px; }
+    .chart-wrap { width: 160px; height: 160px; }
     .legend-card {
       background: var(--card); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 22px 24px;
@@ -143,15 +146,18 @@
     }
     .legend-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+
+    /* Enhancement 2 — solid-colour status pills, white text */
     .badge {
       display: inline-flex; align-items: center;
       border-radius: 6px; padding: 2px 9px;
-      font-size: 11px; font-weight: 700; border: 1px solid;
+      font-size: 11px; font-weight: 700;
+      color: #fff; border: none;
     }
-    .badge-good    { background: var(--good-bg);  color: var(--good-text); border-color: var(--good-bd); }
-    .badge-ok      { background: var(--ok-bg);    color: var(--ok-text);   border-color: var(--ok-bd); }
-    .badge-warn    { background: var(--warn-bg);  color: var(--warn-text); border-color: var(--warn-bd); }
-    .badge-missing { background: var(--miss-bg);  color: var(--miss-text); border-color: var(--miss-bd); }
+    .badge-good    { background: var(--green); }
+    .badge-ok      { background: var(--amber); }
+    .badge-warn    { background: var(--red); }
+    .badge-missing { background: var(--grey-pill); }
 
     /* ── Section header ── */
     .section-header {
@@ -182,7 +188,7 @@
       padding: 0 7px; font-size: 11px;
     }
     .tab-btn:not(.active) .tab-count { background: var(--bg); color: var(--muted); }
-    .search-wrap { position: relative; flex: 1; min-width: 200px; max-width: 380px; }
+    .search-wrap { position: relative; flex: 1; min-width: 180px; max-width: 380px; }
     .search-icon {
       position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
       color: var(--muted); pointer-events: none;
@@ -196,15 +202,21 @@
     .search-input:focus { border-color: var(--orange); }
     .qfilter { display: flex; gap: 6px; flex-wrap: wrap; }
     .qbtn {
-      padding: 6px 13px; border-radius: 8px; font-size: 11px; font-weight: 700;
-      cursor: pointer; border: 1px solid; background: var(--card); font-family: inherit;
+      min-width: 80px; padding: 6px 13px; border-radius: 8px;
+      font-size: 11px; font-weight: 700;
+      cursor: pointer; border: 1px solid; background: var(--card);
+      font-family: inherit; transition: all 0.15s;
     }
-    .qbtn[data-q="all"]  { color: var(--orange-d); border-color: var(--orange); }
-    .qbtn[data-q="good"] { color: var(--good-text); border-color: var(--good-bd); }
-    .qbtn[data-q="ok"]   { color: var(--ok-text);   border-color: var(--ok-bd); }
-    .qbtn[data-q="warn"] { color: var(--warn-text);  border-color: var(--warn-bd); }
-    .qbtn[data-q="missing"] { color: var(--miss-text); border-color: var(--miss-bd); }
-    .qbtn[data-q="all"].active { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .qbtn[data-q="all"]     { color: var(--orange); border-color: var(--orange); }
+    .qbtn[data-q="good"]    { color: var(--green);  border-color: var(--green); }
+    .qbtn[data-q="ok"]      { color: var(--amber);  border-color: var(--amber); }
+    .qbtn[data-q="warn"]    { color: var(--red);    border-color: var(--red); }
+    .qbtn[data-q="missing"] { color: var(--grey-pill); border-color: var(--grey-pill); }
+    .qbtn[data-q="all"].active     { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .qbtn[data-q="good"].active    { background: var(--green);  color: #fff; border-color: var(--green); }
+    .qbtn[data-q="ok"].active      { background: var(--amber);  color: #fff; border-color: var(--amber); }
+    .qbtn[data-q="warn"].active    { background: var(--red);    color: #fff; border-color: var(--red); }
+    .qbtn[data-q="missing"].active { background: var(--grey-pill); color: #fff; }
 
     /* ── Item cards ── */
     .item-list { display: flex; flex-direction: column; gap: 10px; }
@@ -254,6 +266,114 @@
       border-top: 1px solid var(--border); margin-top: 48px;
     }
     .footer a { color: var(--orange); text-decoration: none; }
+
+    /* ══════════════════════════════════════════════════════
+       MOBILE RESPONSIVE — Enhancement 3
+       Mobile-first breakpoints
+    ══════════════════════════════════════════════════════ */
+
+    /* ── Mobile base (up to 767px) ── */
+    @media (max-width: 767px) {
+
+      /* Hero */
+      .hero {
+        padding: 40px 16px 36px;
+      }
+      .hero h1 {
+        font-size: 22px;
+        letter-spacing: 0.3px;
+      }
+      .hero-sub {
+        font-size: 1rem; /* never below 1rem on mobile */
+        letter-spacing: 0.06em;
+      }
+      .hero-chips { gap: 7px; }
+      .chip { font-size: 10px; padding: 4px 10px; }
+      .hero-intro { font-size: 13px; }
+
+      /* KPI grid — 2 columns on mobile */
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 16px auto 0;
+        padding: 0 16px;
+        gap: 10px;
+      }
+      .kpi { padding: 16px 14px 14px; }
+      .kpi-num { font-size: 28px; }
+      .kpi-icon { font-size: 16px; }
+
+      /* Wrap padding */
+      .wrap { padding: 0 16px; }
+
+      /* Insight row — stack vertically */
+      .insight-row {
+        grid-template-columns: 1fr;
+        margin: 20px 0 20px;
+      }
+      .chart-card {
+        flex-direction: column;
+        align-items: center;
+      }
+      .chart-wrap {
+        width: 220px;
+        height: 220px;
+      }
+
+      /* Controls */
+      .controls { gap: 10px; }
+      .tabs { flex-wrap: wrap; }
+      .tab-btn { padding: 6px 14px; font-size: 12px; }
+      .search-wrap { min-width: 100%; max-width: 100%; }
+      .qbtn { font-size: 13px; }
+
+      /* Item cards — stack columns vertically */
+      .item-inner {
+        display: flex;
+        flex-direction: column;
+      }
+      .item-id-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 14px;
+      }
+      .item-url {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        word-break: break-all;
+      }
+      .item-field {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 14px;
+      }
+      .item-field:last-child { border-bottom: none; }
+      .field-text { font-size: 13px; white-space: normal; word-break: break-word; }
+
+      /* Footer */
+      .footer { padding: 24px 16px 36px; font-size: 11px; }
+    }
+
+    /* ── Very small screens (up to 479px) — 1 column KPI ── */
+    @media (max-width: 479px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Tablet (768px–1023px) ── */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero { padding: 56px 32px 48px; }
+      .hero h1 { font-size: 28px; }
+      .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0 32px;
+        margin: 16px auto 0;
+      }
+      .wrap { padding: 0 32px; }
+      .item-inner { grid-template-columns: 180px 1fr 1fr; }
+      .footer { padding: 28px 32px 40px; }
+    }
   </style>
 </head>
 <body>
@@ -378,7 +498,7 @@
         <div class="item-field">
           <div class="field-head">
             <span class="field-label">Meta Description</span>
-            <span class="badge badge-ok">153c</span>
+            <span class="badge badge-good">153c</span>
           </div>
           <span class="field-text">Private self-catering villas on a working Stellenbosch wine estate. Vineyard views, award-winning wines and warm personal hosting in the Bottelary Hills.</span>
         </div>
@@ -480,13 +600,15 @@ new Chart(document.getElementById('qualityChart'), {
     labels: ['Optimal', 'Acceptable', 'Needs work', 'Missing'],
     datasets: [{
       data: [14, 7, 1, 1],
-      backgroundColor: ['#27AE60', '#F39C12', '#E74C3C', '#adb5bd'],
+      backgroundColor: ['#16A34A', '#D97706', '#DC2626', '#6B7280'],
       borderWidth: 2,
       borderColor: '#ffffff',
     }]
   },
   options: {
     cutout: '68%',
+    responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: { display: false },
       tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}` } }
