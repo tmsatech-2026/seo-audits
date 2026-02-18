@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Report — Kunjani Villas & Wines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange:   #EA580C;
+      --blue:     #2563EB;
+      --green:    #16A34A;
+      --amber:    #D97706;
+      --purple:   #7C3AED;
+      --red:      #E05A4E;
+      --grey-pill:#6B7280;
+      --bg:       #f0f2f5;
+      --card:     #ffffff;
+      --border:   #e4e7eb;
+      --text:     #1a1a2e;
+      --muted:    #6c757d;
+      --radius:   12px;
+      --shadow:   0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md:0 4px 16px rgba(0,0,0,0.11);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; }
+
+    /* ── Hero ── */
+    .hero {
+      background:
+        linear-gradient(150deg, rgba(10,6,2,0.68) 0%, rgba(20,12,4,0.56) 60%, rgba(30,18,6,0.48) 100%),
+        url("https://kunjani-villas.co.za/wp-content/uploads/2025/10/poolside-view-vineyards-kunjani-villas-1.webp") center top / cover no-repeat;
+      border-bottom: 3px solid var(--orange);
+      padding: 72px 48px 60px;
+      color: #fff;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(234,88,12,0.20); border: 1px solid rgba(234,88,12,0.45);
+      border-radius: 6px; padding: 5px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); margin-bottom: 20px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+    .hero h1 { font-size: 38px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .hero-sub { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.08em; color: rgba(255,255,255,0.90); text-transform: uppercase; margin-top: 10px; margin-bottom: 28px; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 6px; padding: 5px 14px; font-size: 11px; color: rgba(255,255,255,0.65); }
+    .chip strong { color: rgba(255,255,255,0.92); font-weight: 600; }
+    .hero-intro { max-width: 660px; font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.72); padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); }
+
+    /* ── KPI cards — solid colour, white text ── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 1200px; margin: -28px auto 0; padding: 0 48px; }
+    .kpi { border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 22px 20px 18px; color: #fff; }
+    .kpi.c-blue   { background: var(--blue); }
+    .kpi.c-purple { background: var(--purple); }
+    .kpi.c-amber  { background: var(--amber); }
+    .kpi.c-green  { background: var(--green); }
+    .kpi.c-red    { background: var(--red); }
+    .kpi-icon { margin-bottom: 10px; opacity: 0.90; display: block; }
+    .kpi-icon svg { display: block; width: 28px; height: 28px; }
+    .kpi-num { font-size: 38px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: #fff; }
+    .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.80); }
+
+    /* ── Wrap ── */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+    /* ── Quality legend ── */
+    .legend-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 24px; margin: 36px 0 28px; display: flex; flex-direction: column; gap: 14px; }
+    .legend-title { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); }
+    .legend-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+
+    /* ── Badges — solid colour, white text ── */
+    .badge { display: inline-flex; align-items: center; border-radius: 6px; padding: 2px 9px; font-size: 11px; font-weight: 700; color: #fff; }
+    .badge-good    { background: var(--green); }
+    .badge-ok      { background: var(--amber); }
+    .badge-warn    { background: var(--red); }
+    .badge-missing { background: var(--grey-pill); }
+
+    /* ── Section header ── */
+    .section-header { font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); border-left: 3px solid var(--orange); padding-left: 12px; margin-bottom: 16px; }
+
+    /* ── Controls ── */
+    .controls { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tabs { display: flex; gap: 3px; background: var(--card); border-radius: var(--radius); padding: 4px; box-shadow: var(--shadow); }
+    .tab-btn { padding: 7px 20px; border: none; background: none; font-size: 13px; font-weight: 600; color: var(--muted); border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+    .tab-btn.active { background: var(--orange); color: #fff; }
+    .tab-count { background: rgba(255,255,255,0.25); border-radius: 10px; padding: 0 7px; font-size: 11px; }
+    .tab-btn:not(.active) .tab-count { background: var(--bg); color: var(--muted); }
+    .search-wrap { position: relative; flex: 1; min-width: 180px; max-width: 380px; }
+    .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .search-input { width: 100%; padding: 9px 14px 9px 36px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: inherit; background: var(--card); box-shadow: var(--shadow); outline: none; }
+    .search-input:focus { border-color: var(--orange); }
+    .qfilter { display: flex; gap: 6px; flex-wrap: wrap; }
+    .qbtn { min-width: 80px; padding: 6px 13px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid; background: var(--card); font-family: inherit; transition: all 0.15s; }
+    .qbtn[data-q="all"]     { color: var(--orange); border-color: var(--orange); }
+    .qbtn[data-q="good"]    { color: var(--green);  border-color: var(--green); }
+    .qbtn[data-q="ok"]      { color: var(--amber);  border-color: var(--amber); }
+    .qbtn[data-q="warn"]    { color: var(--red);    border-color: var(--red); }
+    .qbtn[data-q="missing"] { color: var(--grey-pill); border-color: var(--grey-pill); }
+    .qbtn[data-q="all"].active     { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .qbtn[data-q="good"].active    { background: var(--green);  color: #fff; }
+    .qbtn[data-q="ok"].active      { background: var(--amber);  color: #fff; }
+    .qbtn[data-q="warn"].active    { background: var(--red);    color: #fff; }
+    .qbtn[data-q="missing"].active { background: var(--grey-pill); color: #fff; }
+
+    /* ── Tab panels ── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Item cards ── */
+    .item-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 48px; }
+    .item-card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; transition: box-shadow 0.2s, transform 0.1s; }
+    .item-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .item-inner { display: grid; grid-template-columns: 220px 1fr 1fr; }
+    .item-id-col { padding: 16px 18px; border-right: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+    .item-name { font-size: 13px; font-weight: 600; line-height: 1.4; }
+    .item-url { font-size: 11px; color: var(--blue); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+    .item-url:hover { color: var(--orange); text-decoration: underline; }
+    .item-pid { font-size: 10px; color: var(--muted); background: var(--bg); border-radius: 4px; padding: 1px 7px; display: inline-block; width: fit-content; }
+    .item-field { padding: 14px 18px; display: flex; flex-direction: column; gap: 7px; border-right: 1px solid var(--border); }
+    .item-field:last-child { border-right: none; }
+    .field-head { display: flex; align-items: center; justify-content: space-between; }
+    .field-label { font-size: 9px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); }
+    .field-text { font-size: 13px; line-height: 1.5; }
+    .field-text.empty { color: var(--muted); font-style: italic; font-size: 12px; }
+    .kw-tag { display: inline-block; background: #EBF4FF; color: var(--blue); border-radius: 4px; padding: 1px 8px; font-size: 11px; font-weight: 600; border: 1px solid #bee3f8; }
+    .no-results { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 15px; }
+
+    /* ── Footer ── */
+    .footer { text-align: center; padding: 28px 48px 44px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 8px; }
+    .footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── Mobile responsive ── */
+    @media (max-width: 767px) {
+      .hero { padding: 40px 16px 36px; }
+      .hero h1 { font-size: 22px; }
+      .hero-sub { font-size: 1rem; }
+      .hero-chips { gap: 7px; }
+      .chip { font-size: 10px; padding: 4px 10px; }
+      .hero-intro { font-size: 13px; }
+      .kpi-grid { grid-template-columns: repeat(6, 1fr); margin: 16px auto 0; padding: 0 16px; gap: 10px; }
+      .kpi-grid .kpi:nth-child(-n+3) { grid-column: span 2; }
+      .kpi-grid .kpi:nth-child(4), .kpi-grid .kpi:nth-child(5) { grid-column: span 3; }
+      .kpi { padding: 12px; min-height: 90px; display: flex; flex-direction: column; justify-content: center; }
+      .kpi-num { font-size: 1.7rem; }
+      .kpi-icon svg { width: 20px; height: 20px; stroke-width: 1.5px; }
+      .wrap { padding: 0 16px; }
+      .legend-card { margin: 20px 0 16px; }
+      .controls { gap: 10px; }
+      .tabs { flex-wrap: wrap; }
+      .tab-btn { padding: 6px 14px; font-size: 12px; }
+      .search-wrap { min-width: 100%; max-width: 100%; }
+      .item-inner { display: flex; flex-direction: column; }
+      .item-id-col { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 14px; }
+      .item-url { white-space: normal; overflow: visible; text-overflow: unset; word-break: break-all; }
+      .item-field { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 14px; }
+      .item-field:last-child { border-bottom: none; }
+      .field-text { white-space: normal; word-break: break-word; }
+      .footer { padding: 24px 16px 36px; font-size: 11px; }
+    }
+    @media (max-width: 359px) {
+      .kpi-grid { gap: 7px; padding: 0 12px; }
+      .kpi { padding: 10px 8px; min-height: 80px; }
+      .kpi-num { font-size: 1.4rem; }
+      .kpi-label { font-size: 8px; }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero { padding: 56px 32px 48px; }
+      .hero h1 { font-size: 28px; }
+      .kpi-grid { grid-template-columns: repeat(3, 1fr); padding: 0 32px; margin: 16px auto 0; }
+      .wrap { padding: 0 32px; }
+      .item-inner { grid-template-columns: 180px 1fr 1fr; }
+      .footer { padding: 28px 32px 40px; }
+    }
+    @media print {
+      body { background: white; }
+      .hero { padding: 32px 32px 28px; }
+      .kpi-grid, .wrap { padding: 0 32px; }
+      .controls { display: none; }
+      .tab-panel { display: block !important; }
+      .item-card { break-inside: avoid; margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">SEO Update Report</div>
+    <h1>Kunjani Villas & Wines</h1>
+    <p class="hero-sub">kunjani-villas.co.za &mdash; Rank Math SEO Batch Update</p>
+    <div class="hero-chips">
+      <div class="chip">Generated <strong>18 February 2026 at 18:04</strong></div>
+      <div class="chip">WordPress + <strong>Rank Math</strong></div>
+      <div class="chip">TMSA SEO Automation</div>
+    </div>
+    <p class="hero-intro">
+      This report shows the current live state of all SEO title tags and meta descriptions
+      on <strong style="color:rgba(255,255,255,0.92)">kunjani-villas.co.za</strong>.
+      Every page has been reviewed and optimised with on-brand, guest-focused copy,
+      targeted keywords, and Google best-practice character counts &mdash;
+      with the goal of improving organic search visibility and driving more direct bookings.
+    </p>
+  </div>
+</header>
+
+<div class="kpi-grid">
+  <div class="kpi c-blue">
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
+    <div class="kpi-num">23</div>
+    <div class="kpi-label">Pages Indexed</div>
+  </div>
+  <div class="kpi c-purple">
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+    <div class="kpi-num">0</div>
+    <div class="kpi-label">Posts Indexed</div>
+  </div>
+  <div class="kpi c-amber">
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+    <div class="kpi-num">23</div>
+    <div class="kpi-label">Total Items</div>
+  </div>
+  <div class="kpi c-green">
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
+    <div class="kpi-num">19</div>
+    <div class="kpi-label">Titles Optimal</div>
+  </div>
+  <div class="kpi c-red">
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+    <div class="kpi-num">0</div>
+    <div class="kpi-label">Missing Descriptions</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="legend-card">
+    <div class="legend-title">Quality Key &mdash; Titles &amp; Descriptions</div>
+    <div class="legend-row">
+      <div class="legend-item"><span class="badge badge-good">50&ndash;60c</span> Title optimal</div>
+      <div class="legend-item"><span class="badge badge-ok">45&ndash;65c</span> Title acceptable</div>
+      <div class="legend-item"><span class="badge badge-warn">&#10005;</span> Too short / long</div>
+      <div class="legend-item"><span class="badge badge-missing">Missing</span> Not set</div>
+    </div>
+    <div class="legend-row">
+      <div class="legend-item"><span class="badge badge-good">150&ndash;160c</span> Description optimal</div>
+      <div class="legend-item"><span class="badge badge-ok">140&ndash;170c</span> Description acceptable</div>
+      <div class="legend-item"><span class="badge badge-warn">&#10005;</span> Outside range</div>
+    </div>
+  </div>
+
+  <div class="section-header">All Pages &amp; Posts</div>
+
+  <div class="controls">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('pages')">
+        Pages <span class="tab-count" id="tc-pages">23</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('posts')">
+        Posts <span class="tab-count" id="tc-posts">0</span>
+      </button>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input class="search-input" type="text" id="search" placeholder="Search by title, URL or keyword&hellip;" oninput="applyFilters()">
+    </div>
+    <div class="qfilter">
+      <button class="qbtn active" data-q="all" onclick="setQ('all')">All</button>
+      <button class="qbtn" data-q="good" onclick="setQ('good')">&#10003; Optimal</button>
+      <button class="qbtn" data-q="ok" onclick="setQ('ok')">&#9679; OK</button>
+      <button class="qbtn" data-q="warn" onclick="setQ('warn')">&#9650; Needs work</button>
+      <button class="qbtn" data-q="missing" onclick="setQ('missing')">&#8212; Missing</button>
+    </div>
+  </div>
+
+  <div id="panel-pages" class="tab-panel active">
+    <div class="item-list" id="list-pages"></div>
+    <div class="no-results" id="nr-pages" style="display:none">No pages match your filters.</div>
+  </div>
+  <div id="panel-posts" class="tab-panel">
+    <div class="item-list" id="list-posts"></div>
+    <div class="no-results" id="nr-posts" style="display:none">No posts match your filters.</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>
+    Kunjani Villas & Wines &mdash; SEO Report generated 18 February 2026 at 18:04<br>
+    <a href="https://kunjani-villas.co.za" target="_blank" rel="noopener noreferrer">https://kunjani-villas.co.za</a>
+    &nbsp;&middot;&nbsp;
+    Powered by <a href="https://www.tourismmarketing.co.za" target="_blank">TMSA SEO Automation</a>
+  </p>
+</footer>
+
+<script>
+const PAGES_DATA = [{"id": 5499, "title": "Kunjani Villas & Wines Fact Sheet", "slug": "kunjani-villas-wines-fact-sheet", "url": "https://kunjani-villas.co.za/kunjani-villas-wines-fact-sheet/", "seo_title": "Kunjani Villas Fact Sheet | Stellenbosch Wine Estate", "seo_desc": "Key facts and property details for Kunjani Villas & Wines — eight private villas, award-winning estate wines and self-catering accommodation in Bottelary Hills.", "focus_kw": ""}, {"id": 4785, "title": "Presidential Villa", "slug": "presidential-villa", "url": "https://kunjani-villas.co.za/presidential-villa/", "seo_title": "Presidential Villa | Kunjani's Finest Stellenbosch Villa", "seo_desc": "Kunjani's most premium villa with jacuzzi, panoramic Winelands views and private terrace. Sleeps up to 6 on a Stellenbosch wine estate from R9,450 per night.", "focus_kw": ""}, {"id": 4787, "title": "Residence Villa", "slug": "residential-villa", "url": "https://kunjani-villas.co.za/residential-villa/", "seo_title": "Residence Villa | Private Wine Farm Stay in Stellenbosch", "seo_desc": "Quiet, unhurried and elegantly simple — the Residence Villa offers couples a private Stellenbosch wine farm retreat with vineyard views and warm personal hosting.", "focus_kw": ""}, {"id": 4783, "title": "Private Cellar Villa", "slug": "private-cellar-villa", "url": "https://kunjani-villas.co.za/private-cellar-villa/", "seo_title": "Private Cellar Villa | Luxury Vineyard Stay Stellenbosch", "seo_desc": "One-bedroom luxury villa nestled between Kunjani's vines in Stellenbosch. King XL bed, full self-catering kitchen and private patio from R6,255 per night.", "focus_kw": ""}, {"id": 4158, "title": "Privacy Policy", "slug": "privacy-policy", "url": "https://kunjani-villas.co.za/privacy-policy/", "seo_title": "Privacy Policy | Kunjani Villas &amp; Wines Stellenbosch", "seo_desc": "How Kunjani Villas &amp; Wines collects, uses and protects your personal information. Read our privacy policy before booking villa accommodation in Stellenbosch.", "focus_kw": ""}, {"id": 3295, "title": "Wines", "slug": "wines", "url": "https://kunjani-villas.co.za/wines/", "seo_title": "Kunjani Wines | Award-Winning Stellenbosch Wine Estate", "seo_desc": "Discover Kunjani's award-winning wines, including a Michelangelo Gold Medal Shiraz. Chenin Blanc, Rosé, Cabernet and more — direct from our Stellenbosch estate.", "focus_kw": ""}, {"id": 2746, "title": "Gallery", "slug": "gallery", "url": "https://kunjani-villas.co.za/gallery/", "seo_title": "Kunjani Villas Gallery | Stellenbosch Wine Estate", "seo_desc": "Browse photos of Kunjani's eight private villas, award-winning wines and vineyard views in Stellenbosch's Bottelary Hills. See what awaits your wine farm escape.", "focus_kw": ""}, {"id": 2646, "title": "Arts, Culture & Markets", "slug": "arts-culture-markets", "url": "https://kunjani-villas.co.za/arts-culture-markets/", "seo_title": "Arts, Culture & Markets in Stellenbosch | Kunjani", "seo_desc": "Explore Stellenbosch's arts scene, weekend markets and rich cultural heritage — all within easy reach of Kunjani Villas wine estate in the Bottelary Hills.", "focus_kw": ""}, {"id": 3060, "title": "Golfing Greens", "slug": "golfing-greens", "url": "https://kunjani-villas.co.za/golfing-greens/", "seo_title": "Golf Near Kunjani Villas | Stellenbosch Wine Estate", "seo_desc": "Championship golf in the Cape Winelands, a short drive from Kunjani Villas. Enjoy Stellenbosch's premier golf courses between vineyard views from Bottelary Hills.", "focus_kw": ""}, {"id": 2957, "title": "Garden Villa", "slug": "garden-villa", "url": "https://kunjani-villas.co.za/garden-villa/", "seo_title": "Garden Villa | Intimate Vineyard Stay Stellenbosch", "seo_desc": "Intimate one-bedroom villa nestled among the vines at Kunjani, Stellenbosch. Private veranda, braai, pool access and full self-catering kitchen from R3,825/night.", "focus_kw": ""}, {"id": 2907, "title": "Merlot Villa", "slug": "merlot-villa", "url": "https://kunjani-villas.co.za/merlot-villa/", "seo_title": "Merlot Villa | Couples Retreat Stellenbosch Wine Farm", "seo_desc": "Elegant one-bedroom villa on a Stellenbosch wine estate. Open-plan living, en-suite bathroom and private veranda with braai from R3,825 per night. Ideal for couples.", "focus_kw": ""}, {"id": 3197, "title": "Things To Do", "slug": "things-to-do", "url": "https://kunjani-villas.co.za/things-to-do/", "seo_title": "Things To Do in Stellenbosch | Kunjani Villas Guide", "seo_desc": "From wine tasting and fine dining to golf, cycling and hiking — discover the best things to do near Kunjani Villas in Stellenbosch's Bottelary Hills wine estate.", "focus_kw": ""}, {"id": 2457, "title": "Offers", "slug": "offers", "url": "https://kunjani-villas.co.za/offers/", "seo_title": "Special Offers | Kunjani Villas & Wines Stellenbosch", "seo_desc": "Explore seasonal villa packages and special offers at Kunjani Villas & Wines in Stellenbosch. Book direct for exclusive wine farm stays in the Bottelary Hills.", "focus_kw": ""}, {"id": 3011, "title": "Adventure", "slug": "adventure", "url": "https://kunjani-villas.co.za/adventure/", "seo_title": "Adventure Near Kunjani Villas | Stellenbosch Activities", "seo_desc": "Cycling, hiking and outdoor adventures near Kunjani Villas in Stellenbosch. Explore the Cape Winelands between vineyard views, mountain trails and calm mornings.", "focus_kw": ""}, {"id": 2696, "title": "Wine & Dine", "slug": "wine-dine", "url": "https://kunjani-villas.co.za/wine-dine/", "seo_title": "Wine & Dine in Stellenbosch | Kunjani Villas & Wines", "seo_desc": "Discover the finest restaurants, wine estates and culinary experiences near Kunjani Villas in Stellenbosch's Bottelary Hills. Fine dining meets vineyard living.", "focus_kw": ""}, {"id": 2257, "title": "Shiraz Villa", "slug": "shiraz-villa", "url": "https://kunjani-villas.co.za/shiraz-villa/", "seo_title": "Shiraz Villa | Family-Friendly Stellenbosch Wine Farm", "seo_desc": "Spacious two-bedroom villa on a Stellenbosch wine estate. Sleeps up to 6 guests with modern interiors, vineyard views, private braai and pool access from R5,355/night.", "focus_kw": ""}, {"id": 2357, "title": "Cabernet Villa", "slug": "cabernet-villa", "url": "https://kunjani-villas.co.za/cabernet-villa/", "seo_title": "Cabernet Villa | Secluded Vineyard Villa Stellenbosch", "seo_desc": "Intimate one-bedroom villa on a Stellenbosch wine estate. Vineyard views, full self-catering kitchen, private braai and pool access from R3,825 per night.", "focus_kw": ""}, {"id": 2804, "title": "Contact Us", "slug": "contact-us", "url": "https://kunjani-villas.co.za/contact-us/", "seo_title": "Contact Kunjani Villas | Stellenbosch Wine Farm Stay", "seo_desc": "Get in touch with Kunjani Villas & Wines in Stellenbosch. Call +27 87 630 0409 or email to enquire about villa availability, wine purchases and direct bookings.", "focus_kw": ""}, {"id": 2407, "title": "The Garden Villa", "slug": "the-garden-villa", "url": "https://kunjani-villas.co.za/the-garden-villa/", "seo_title": "The Garden Villa | Tucked-Away Winelands Retreat", "seo_desc": "A discreet one-bedroom villa nestled among the vines at Kunjani, Stellenbosch. Private veranda, braai, pool access and full kitchen for couples from R3,825/night.", "focus_kw": ""}, {"id": 2307, "title": "Stolen Chicken Villa", "slug": "stolen-chicken-villa", "url": "https://kunjani-villas.co.za/stolen-chicken-villa/", "seo_title": "Stolen Chicken Villa | Contemporary Vineyard Retreat", "seo_desc": "Two-bedroom villa with en-suite bathrooms on a Stellenbosch wine estate. Sleeps up to 5 guests with vineyard views, private braai and pool access from R5,355/night.", "focus_kw": ""}, {"id": 2159, "title": "Self-Catering Accommodation in Stellenbosch – Kunjani Villas", "slug": "kunjani-villas-self-catering-accommodation-stellenbosch", "url": "https://kunjani-villas.co.za/kunjani-villas-self-catering-accommodation-stellenbosch/", "seo_title": "Luxury Self-Catering Villas | Stellenbosch Wine Farm", "seo_desc": "Eight private self-catering villas on a Stellenbosch wine estate. Fully equipped kitchens, vineyard views, braai and pool access from R3,825 per night.", "focus_kw": "self-catering villas stellenbosch"}, {"id": 2052, "title": "About Us", "slug": "about-us", "url": "https://kunjani-villas.co.za/about-us/", "seo_title": "About Kunjani Villas & Wines | Stellenbosch Winelands", "seo_desc": "Meet Paul and Pia, founders of Kunjani Villas & Wines — a boutique wine estate in Stellenbosch where German precision and South African soul come together.", "focus_kw": ""}, {"id": 2100, "title": "Home Page", "slug": "home-page", "url": "https://kunjani-villas.co.za/", "seo_title": "Kunjani Villas & Wines | Stellenbosch Wine Farm Luxury Villas", "seo_desc": "Private self-catering luxury villas on a working Stellenbosch wine estate. Vineyard views, award-winning wines and warm personal hosting in the Bottelary Hills.", "focus_kw": "kunjani villas"}];
+const POSTS_DATA = [];
+const BASE_URL   = 'https://kunjani-villas.co.za';
+
+let currentTab = 'pages';
+let currentQ   = 'all';
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function gradeBadge(text, kind) {
+  if (!text || !text.trim()) return ['missing','Missing'];
+  const n = text.length;
+  if (kind === 'title') {
+    if (n >= 50 && n <= 60) return ['good', n+'c'];
+    if (n >= 45 && n <= 65) return ['ok',   n+'c'];
+    return                         ['warn',  n+'c'];
+  } else {
+    if (n >= 150 && n <= 160) return ['good', n+'c'];
+    if (n >= 140 && n <= 170) return ['ok',   n+'c'];
+    return                           ['warn',  n+'c'];
+  }
+}
+
+function overallGrade(item) {
+  const [tg] = gradeBadge(item.seo_title, 'title');
+  const [dg] = gradeBadge(item.seo_desc,  'desc');
+  if (tg === 'missing' || dg === 'missing') return 'missing';
+  if (tg === 'warn'    || dg === 'warn')    return 'warn';
+  if (tg === 'ok'      || dg === 'ok')      return 'ok';
+  return 'good';
+}
+
+function renderItem(item) {
+  const [tGrade, tLabel] = gradeBadge(item.seo_title, 'title');
+  const [dGrade, dLabel] = gradeBadge(item.seo_desc,  'desc');
+  const overall = overallGrade(item);
+
+  const urlDisplay = item.url.replace(BASE_URL, '').replace(/^\//, '') || '/';
+
+  const titleHtml = item.seo_title
+    ? `<span class="field-text">${esc(item.seo_title)}</span>`
+    : `<span class="field-text empty">Not set &mdash; will inherit page title</span>`;
+
+  const descHtml = item.seo_desc
+    ? `<span class="field-text">${esc(item.seo_desc)}</span>`
+    : `<span class="field-text empty">No meta description set</span>`;
+
+  const kwHtml = item.focus_kw
+    ? `<div style="margin-top:4px;font-size:11px;color:var(--muted)">Focus KW: <span class="kw-tag">${esc(item.focus_kw)}</span></div>`
+    : '';
+
+  return `
+    <div class="item-card" data-q="${overall}"
+      data-search="${esc((item.title+' '+item.url+' '+(item.seo_title||'')+' '+(item.focus_kw||'')).toLowerCase())}">
+      <div class="item-inner">
+        <div class="item-id-col">
+          <div class="item-name">${esc(item.title)}</div>
+          <a class="item-url" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(urlDisplay)}</a>
+          <div class="item-pid">ID ${esc(String(item.id))}</div>
+        </div>
+        <div class="item-field">
+          <div class="field-head">
+            <span class="field-label">Title Tag</span>
+            <span class="badge badge-${tGrade}">${tLabel}</span>
+          </div>
+          ${titleHtml}
+        </div>
+        <div class="item-field">
+          <div class="field-head">
+            <span class="field-label">Meta Description</span>
+            <span class="badge badge-${dGrade}">${dLabel}</span>
+          </div>
+          ${descHtml}
+          ${kwHtml}
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderList(items, listId, nrId) {
+  document.getElementById(listId).innerHTML = items.map(renderItem).join('');
+  applyFilters();
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i===0 && tab==='pages') || (i===1 && tab==='posts'));
+  });
+  document.getElementById('panel-pages').classList.toggle('active', tab==='pages');
+  document.getElementById('panel-posts').classList.toggle('active', tab==='posts');
+  applyFilters();
+}
+
+function setQ(q) {
+  currentQ = q;
+  document.querySelectorAll('.qbtn').forEach(b => {
+    b.classList.toggle('active', b.dataset.q === q);
+  });
+  applyFilters();
+}
+
+function applyFilters() {
+  const q      = document.getElementById('search').value.toLowerCase().trim();
+  const listId = currentTab === 'pages' ? 'list-pages' : 'list-posts';
+  const nrId   = currentTab === 'pages' ? 'nr-pages'   : 'nr-posts';
+  const cards  = document.getElementById(listId).querySelectorAll('.item-card');
+  let visible  = 0;
+  cards.forEach(c => {
+    const matchQ = currentQ === 'all' || c.dataset.q === currentQ;
+    const matchS = !q || c.dataset.search.includes(q);
+    const show   = matchQ && matchS;
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById(nrId).style.display = visible === 0 ? '' : 'none';
+}
+
+renderList(PAGES_DATA, 'list-pages', 'nr-pages');
+renderList(POSTS_DATA, 'list-posts', 'nr-posts');
+</script>
+</body>
+</html>
