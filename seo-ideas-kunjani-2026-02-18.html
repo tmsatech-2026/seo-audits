@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>What's Next — SEO Action Plan &middot; Kunjani Villas & Wines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    :root {
+      --orange:    #EA580C;
+      --blue:      #2563EB;
+      --green:     #16A34A;
+      --amber:     #D97706;
+      --purple:    #7C3AED;
+      --red:       #E05A4E;
+      --grey-pill: #6B7280;
+      --bg:        #f0f2f5;
+      --card:      #ffffff;
+      --border:    #e4e7eb;
+      --text:      #1a1a2e;
+      --muted:     #6c757d;
+      --radius:    12px;
+      --shadow:    0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.11);
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────────────── */
+    .hero {
+      background:
+        linear-gradient(150deg, rgba(10,6,2,0.72) 0%, rgba(20,12,4,0.60) 60%, rgba(30,18,6,0.50) 100%),
+        url("https://kunjani-villas.co.za/wp-content/uploads/2025/10/poolside-view-vineyards-kunjani-villas-1.webp") center top / cover no-repeat;
+      border-bottom: 3px solid var(--orange);
+      padding: 72px 48px 60px;
+      color: #fff;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(234,88,12,0.22); border: 1px solid rgba(234,88,12,0.48);
+      border-radius: 6px; padding: 5px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.88); margin-bottom: 20px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+    .hero h1 { font-size: 38px; font-weight: 800; text-transform: uppercase; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 14px; }
+    .hero-subtitle { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.90); margin-bottom: 20px; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .hero-chip { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.85); }
+    .hero-intro { font-size: 15px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.82); max-width: 680px; }
+
+    /* ── KPI Cards ─────────────────────────────────────────────────────── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; max-width: 1200px; margin: -28px auto 0; padding: 0 48px; }
+    .kpi { border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 22px 20px 18px; color: #fff; }
+    .kpi-num { font-size: 38px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: #fff; }
+    .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.80); }
+    .kpi-icon { margin-bottom: 10px; opacity: 0.90; }
+    .kpi-icon svg { display: block; width: 28px; height: 28px; }
+    .c-blue   { background: #2563EB; }
+    .c-purple { background: #7C3AED; }
+    .c-amber  { background: #D97706; }
+    .c-green  { background: #16A34A; }
+    .c-red    { background: #E05A4E; }
+
+    /* ── Layout ────────────────────────────────────────────────────────── */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .content-area { padding-top: 48px; padding-bottom: 64px; }
+    .report-section { margin-bottom: 60px; }
+
+    /* ── Section Headers ───────────────────────────────────────────────── */
+    .section-header { font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); border-left: 3px solid var(--orange); padding-left: 12px; margin-bottom: 8px; }
+    .section-intro { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; padding-left: 15px; }
+
+    /* ── Action Cards ──────────────────────────────────────────────────── */
+    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .action-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; }
+    .action-card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+    .action-card-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .action-card-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .action-card-body strong { color: var(--text); }
+    .action-card-body code { background: #f0f2f5; border-radius: 4px; padding: 1px 6px; font-size: 12px; color: var(--text); }
+
+    /* Priority badges */
+    .badge { display: inline-flex; align-items: center; border-radius: 5px; padding: 2px 9px; font-size: 10px; font-weight: 700; color: #fff; white-space: nowrap; flex-shrink: 0; }
+    .badge-high   { background: #E05A4E; }
+    .badge-medium { background: #D97706; }
+    .badge-low    { background: #16A34A; }
+    .badge-info   { background: #2563EB; }
+
+    /* ── Blog Idea Cards ───────────────────────────────────────────────── */
+    .ideas-list { display: flex; flex-direction: column; gap: 12px; }
+    .idea-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; display: flex; gap: 20px; align-items: flex-start; }
+    .idea-num { font-size: 28px; font-weight: 800; color: var(--border); line-height: 1; flex-shrink: 0; width: 42px; text-align: right; }
+    .idea-content { flex: 1; }
+    .idea-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.35; }
+    .idea-why { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 10px; }
+    .idea-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .idea-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 9px; border-radius: 4px; color: #fff; }
+    .tag-segment  { background: #7C3AED; }
+    .tag-keyword  { background: #2563EB; }
+    .tag-intent   { background: #16A34A; }
+
+    /* ── Platform Cards ─────────────────────────────────────────────────── */
+    .platform-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .platform-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 22px; }
+    .platform-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .platform-url  { font-size: 12px; color: var(--blue); margin-bottom: 14px; }
+    .platform-actions { list-style: none; }
+    .platform-actions li { font-size: 13px; color: var(--muted); line-height: 1.5; padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 8px; }
+    .platform-actions li:last-child { border-bottom: none; }
+    .platform-actions li::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .platform-actions li strong { color: var(--text); }
+
+    /* ── Footer ─────────────────────────────────────────────────────────── */
+    .footer { text-align: center; padding: 28px 48px 44px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    .footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── Responsive ─────────────────────────────────────────────────────── */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .kpi-grid { grid-template-columns: repeat(3,1fr); margin: 16px auto 0; padding: 0 32px; }
+      .wrap { padding: 0 32px; }
+      .action-grid { grid-template-columns: 1fr; }
+      .platform-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 767px) {
+      .hero { padding: 40px 16px 36px; }
+      .hero h1 { font-size: 22px; }
+      .hero-subtitle { font-size: 1rem; }
+      .kpi-grid { grid-template-columns: repeat(6,1fr); margin: 16px auto 0; padding: 0 16px; gap: 10px; }
+      .kpi-grid .kpi:nth-child(-n+3) { grid-column: span 2; }
+      .kpi-grid .kpi:nth-child(4), .kpi-grid .kpi:nth-child(5) { grid-column: span 3; }
+      .kpi { padding: 12px; }
+      .kpi-num { font-size: 1.7rem; }
+      .kpi-icon svg { width: 20px; height: 20px; }
+      .wrap { padding: 0 16px; }
+      .action-grid { grid-template-columns: 1fr; }
+      .platform-grid { grid-template-columns: 1fr; }
+      .idea-card { flex-direction: column; gap: 8px; }
+      .idea-num { width: auto; text-align: left; font-size: 20px; }
+      .footer { padding: 24px 16px 36px; }
+    }
+    @media (max-width: 359px) {
+      .kpi-num { font-size: 1.4rem; }
+      .kpi-label { font-size: 8px; }
+      .kpi-grid { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ HERO ═════ -->
+<header class="hero">
+  <div class="hero-badge">Post-SEO Action Plan</div>
+  <h1>What's Next</h1>
+  <div class="hero-subtitle">Kunjani Villas & Wines &middot; Digital Growth Roadmap</div>
+  <div class="hero-chips">
+    <span class="hero-chip">Generated 18 February 2026, 18:41</span>
+    <span class="hero-chip">kunjani-villas.co.za</span>
+    <span class="hero-chip">TMSA SEO Automation</span>
+  </div>
+  <p class="hero-intro">On-site SEO metadata has been updated across all pages. This report outlines the next steps to maximise the impact of that work &mdash; from technical housekeeping and content creation through to paid ads, OTA consistency, and social media &mdash; all focused on driving direct bookings and long-term search visibility for Kunjani Villas & Wines.</p>
+</header>
+
+<!-- ══════════════════════════════════════════════════════ KPI CARDS ══════ -->
+<div class="kpi-grid">
+
+  <div class="kpi c-blue">
+    <div class="kpi-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    </div>
+    <div class="kpi-num">8</div>
+    <div class="kpi-label">Technical Actions</div>
+  </div>
+
+  <div class="kpi c-purple">
+    <div class="kpi-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+    </div>
+    <div class="kpi-num">10</div>
+    <div class="kpi-label">Blog Ideas</div>
+  </div>
+
+  <div class="kpi c-amber">
+    <div class="kpi-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    </div>
+    <div class="kpi-num">6</div>
+    <div class="kpi-label">Listings to Update</div>
+  </div>
+
+  <div class="kpi c-green">
+    <div class="kpi-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"/>
+        <line x1="12" y1="20" x2="12" y2="4"/>
+        <line x1="6" y1="20" x2="6" y2="14"/>
+      </svg>
+    </div>
+    <div class="kpi-num">3</div>
+    <div class="kpi-label">Ad Campaigns</div>
+  </div>
+
+  <div class="kpi c-red">
+    <div class="kpi-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"/>
+        <circle cx="6" cy="12" r="3"/>
+        <circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+    </div>
+    <div class="kpi-num">5</div>
+    <div class="kpi-label">Social Channels</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════ MAIN CONTENT ════════ -->
+<main class="wrap content-area">
+
+  <!-- ── 01 TECHNICAL ────────────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">01 &mdash; Technical SEO</div>
+    <p class="section-intro">Housekeeping tasks to ensure search engines can discover, index, and correctly understand the updated content. Most are one-time setup actions with outsized long-term impact.</p>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Submit sitemap to Google Search Console</div></div>
+        <div class="action-card-body">Log in to <strong>Google Search Console</strong>, go to <em>Sitemaps</em>, and submit <code>kunjani-villas.co.za/sitemap_index.xml</code> (the Rank Math sitemap URL). This signals all updated pages to Google and accelerates re-indexing of the new meta titles and descriptions.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Request indexing for key pages individually</div></div>
+        <div class="action-card-body">In Google Search Console, use <strong>URL Inspection &rarr; Request Indexing</strong> for the highest-value pages: homepage, each villa page, contact, and booking enquiry. This fast-tracks the new meta data appearing in search results rather than waiting for the next crawl cycle.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Add LodgingBusiness schema markup</div></div>
+        <div class="action-card-body">Add <strong>JSON-LD schema</strong> of type <code>LodgingBusiness</code> (or <code>VacationRental</code>) to the homepage and key villa pages. Include: name, description, address, telephone, priceRange, amenityFeature, photo, checkInTime, checkOutTime. This helps both Google and LLMs like ChatGPT accurately describe the property in AI-generated results.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Verify Google Analytics 4 conversion events</div></div>
+        <div class="action-card-body">Confirm GA4 is tracking meaningful events: <strong>booking enquiry submissions</strong>, <strong>phone clicks</strong>, <strong>WhatsApp link taps</strong>, and <strong>contact form completions</strong>. Without conversion tracking, it is impossible to measure the ROI of SEO or paid ads. Use GA4 DebugView to test each event.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Check Core Web Vitals in Search Console</div></div>
+        <div class="action-card-body">Review the <strong>Core Web Vitals report</strong> in Search Console (Experience &rarr; Core Web Vitals). Poor scores &mdash; particularly Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS) &mdash; are a direct ranking factor. For image-heavy hospitality sites, the main culprit is usually hero images that are not WebP-optimised or lazy-loaded.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Audit internal linking structure</div></div>
+        <div class="action-card-body">Ensure each villa page links to related villa pages and the main booking/enquiry page. Blog posts (once published) should link to the most relevant villa page using descriptive anchor text. Strong internal linking distributes page authority and keeps visitors engaged &mdash; both positive SEO signals.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Set up Bing Webmaster Tools</div></div>
+        <div class="action-card-body">Submit the site to <strong>Bing Webmaster Tools</strong> (webmaster.bing.com). Bing powers both Bing Search and DuckDuckGo, and &mdash; importantly &mdash; is a key data source behind <strong>Microsoft Copilot (AI chat)</strong>. Submitting your sitemap here significantly improves visibility beyond Google, including in AI-assisted search.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-low">LOW</span><div class="action-card-title">Review image alt text across the site</div></div>
+        <div class="action-card-body">Now that meta titles and descriptions are optimised, the natural next step is ensuring all property photos have <strong>descriptive alt text</strong> (e.g. "Private pool at Kunjani Villas with vineyard views, Stellenbosch"). Alt text contributes to image search rankings and improves accessibility scores, which Google uses as a quality signal.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 02 CONTENT STRATEGY ─────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">02 &mdash; Content Strategy: What Makes Great Blog Content</div>
+    <p class="section-intro">Well-written blog content is the single highest-ROI long-term SEO investment. It attracts organic traffic, earns backlinks, and trains the LLMs powering AI search (ChatGPT, Perplexity, Gemini) to cite and recommend the property.</p>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">SEO</span><div class="action-card-title">Write long-form, question-answering articles</div></div>
+        <div class="action-card-body">Target <strong>1,500&ndash;2,500 words</strong> per article. Each post should answer a specific question a potential guest would type into Google &mdash; e.g. "best private villa Cape Winelands for a family holiday". Long-form content ranks higher, earns more backlinks, and is more likely to be cited by AI search engines.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">SEO</span><div class="action-card-title">Use clear H2/H3 headings and FAQ sections</div></div>
+        <div class="action-card-body">Use <strong>H2 subheadings</strong> for each main point and a <strong>FAQ section</strong> at the end of every post. FAQs dramatically increase the chance of winning featured snippets in Google and are the primary way LLMs extract answers about a property. Example: "Can I bring children to Kunjani Villas?" &rarr; direct, factual answer.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">SEO</span><div class="action-card-title">Link every blog post to a key booking page</div></div>
+        <div class="action-card-body">Each post should include at least <strong>two internal links</strong> to villa pages or the booking enquiry form with natural anchor text (e.g. "book The Garden Villa directly"). This passes SEO authority to commercial pages and keeps readers moving towards a booking rather than bouncing off the site.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">LLM</span><div class="action-card-title">Write factually and specifically about the property</div></div>
+        <div class="action-card-body">LLMs like ChatGPT and Perplexity learn about properties from on-site content. Include <strong>specific details</strong> throughout: guest capacity, villa names, distances to nearby wine estates, what is included, check-in times, pool features. The more specific and factual the content, the more confidently an AI will describe and recommend the property.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">SEO</span><div class="action-card-title">Include original photos with descriptive alt text</div></div>
+        <div class="action-card-body">Include <strong>3&ndash;6 original photos</strong> per post (not stock), each with descriptive alt text. Images increase time-on-page, reduce bounce rate, and appear in Google Image Search. For hospitality, visual content is often the deciding factor between a visitor who enquires and one who leaves.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-info">SEO</span><div class="action-card-title">Publish consistently &mdash; 2 posts per month minimum</div></div>
+        <div class="action-card-body">Consistency matters more than volume. <strong>Two well-researched posts per month</strong> (24 per year) will build topical authority faster than sporadic bursts. Prioritise evergreen content so posts remain relevant and attract traffic for years, not weeks. Each new post is a new entry point into the site from Google.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 03 BLOG IDEAS ───────────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">03 &mdash; Top 10 Blog Article Ideas for Kunjani Villas & Wines</div>
+    <p class="section-intro">These ideas are tailored to the audiences most likely to book a winelands villa stay and to the search queries they type before booking. Each targets a real keyword opportunity while positioning Kunjani Villas & Wines as the authoritative local voice.</p>
+    <div class="ideas-list">
+
+      <div class="idea-card">
+        <div class="idea-num">01</div>
+        <div class="idea-content">
+          <div class="idea-title">Cape Winelands Villa vs Hotel: Why Private Villas Win for Groups &amp; Families</div>
+          <p class="idea-why">Targets one of the highest-intent comparisons in the accommodation space. Guests researching "Cape Winelands accommodation" are weighing options &mdash; this post intercepts them early and makes the case for a private villa experience before they commit to a hotel. Positions Kunjani directly against hotel brands in the region.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Families</span><span class="idea-tag tag-segment">Groups</span><span class="idea-tag tag-keyword">cape winelands villa rental</span><span class="idea-tag tag-intent">Comparison / High Intent</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">02</div>
+        <div class="idea-content">
+          <div class="idea-title">10 Best Wine Estates to Visit Near Kunjani Villas &mdash; A Local Insider Guide</div>
+          <p class="idea-why">Attracts guests already planning a winelands trip but not yet decided where to stay. "Things to do near [property]" content is one of the most reliably high-traffic post formats for accommodation brands. Gets picked up by AI assistants when guests ask "what wine farms are near X?" &mdash; keeps Kunjani's name in the answer.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Couples</span><span class="idea-tag tag-segment">Wine Enthusiasts</span><span class="idea-tag tag-keyword">wine estates stellenbosch</span><span class="idea-tag tag-intent">Discovery / Inspiration</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">03</div>
+        <div class="idea-content">
+          <div class="idea-title">Planning a Corporate Retreat in the Cape Winelands: A Complete Guide</div>
+          <p class="idea-why">Corporate group bookings are among the highest-value bookings a villa property can secure (multiple villas, longer stays, catering). This post targets a specific, high-spending segment with low competition in organic search. Covers logistics, team activities, and venue requirements &mdash; reinforcing Kunjani as a credible corporate venue.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Corporate Groups</span><span class="idea-tag tag-keyword">corporate retreat winelands</span><span class="idea-tag tag-intent">High-Value Booking Intent</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">04</div>
+        <div class="idea-content">
+          <div class="idea-title">The Perfect Romantic Winelands Weekend: A Two-Day Itinerary for Couples</div>
+          <p class="idea-why">Couples short-breaks are the highest-frequency booking type for luxury winelands properties. This post appears for every variation of "romantic Cape Winelands getaway" &mdash; a term searched thousands of times per month. Feature Kunjani's villa as the accommodation anchor and build an attractive itinerary around it.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Couples</span><span class="idea-tag tag-keyword">romantic winelands weekend</span><span class="idea-tag tag-intent">Inspiration / Planning</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">05</div>
+        <div class="idea-content">
+          <div class="idea-title">From Cape Town Airport to the Winelands: How to Plan Your Arrival &amp; First Day</div>
+          <p class="idea-why">Captures international and domestic visitors at the top of the funnel &mdash; before they have decided on specific accommodation. Ranks for "cape town to winelands" and "stellenbosch day trip" terms. Positions Kunjani as an easy, accessible destination and is highly shareable among travel planning communities.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">International Visitors</span><span class="idea-tag tag-keyword">cape town to winelands</span><span class="idea-tag tag-intent">Arrival Planning</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">06</div>
+        <div class="idea-content">
+          <div class="idea-title">Why Book Direct with Kunjani Villas &mdash; What You Get That OTAs Don't Offer</div>
+          <p class="idea-why">Directly addresses the decision point between booking via Airbnb or Booking.com vs the property's own site. Covers practical benefits: lower rates, direct communication, flexibility, added perks. Essential for converting visitors who arrive via OTA search but then Google the property before booking &mdash; an extremely common behaviour pattern.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">All Guests</span><span class="idea-tag tag-keyword">kunjani villas book direct</span><span class="idea-tag tag-intent">Direct Booking Conversion</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">07</div>
+        <div class="idea-content">
+          <div class="idea-title">The Best Time to Visit the Cape Winelands: A Month-by-Month Guide</div>
+          <p class="idea-why">Seasonal content is perennially high-traffic &mdash; people search this every year. Covers harvest season (March), summer peak (December&ndash;January), and quieter winter rates. Builds topical authority for the region and keeps Kunjani's content relevant year-round without needing to be updated.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">All Guests</span><span class="idea-tag tag-keyword">best time to visit cape winelands</span><span class="idea-tag tag-intent">Planning / Evergreen</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">08</div>
+        <div class="idea-content">
+          <div class="idea-title">Family Holidays in the Cape Winelands: Kid-Friendly Activities &amp; Practical Tips</div>
+          <p class="idea-why">Families are an underserved segment in winelands content marketing, which is typically couple-focused. A practical, reassuring guide to bringing children to the region fills a real gap. Covers outdoor activities, child-safe villa features, and tips for travelling with young children &mdash; a combination that earns parental shares and backlinks from family travel blogs.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Families</span><span class="idea-tag tag-keyword">family holiday winelands</span><span class="idea-tag tag-intent">Reassurance / Planning</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">09</div>
+        <div class="idea-content">
+          <div class="idea-title">Winelands Wedding Venue Options: What Couples Need to Know Before Booking</div>
+          <p class="idea-why">Wedding venue searches are extremely high-value &mdash; couples spend months comparing options. Even for intimate celebrations or elopements, a single event booking can be worth as much as multiple months of regular villa revenue. This post targets long-tail wedding planning queries and positions Kunjani for that high-value segment.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">Couples / Events</span><span class="idea-tag tag-keyword">winelands wedding venue</span><span class="idea-tag tag-intent">High-Value Event Booking</span></div>
+        </div>
+      </div>
+
+      <div class="idea-card">
+        <div class="idea-num">10</div>
+        <div class="idea-content">
+          <div class="idea-title">What's Included at Kunjani Villas: An Honest, Detailed Breakdown</div>
+          <p class="idea-why">Transparency content is underused but highly effective. Guests comparing options want specifics: linen, Wi-Fi, pool access, braai facilities, parking, nearest shops, chef/catering options. This post answers every question a guest might email before booking. It is also precisely the structured, factual content that LLMs cite when answering "what does Kunjani Villas include?" in AI chat.</p>
+          <div class="idea-tags"><span class="idea-tag tag-segment">All Guests</span><span class="idea-tag tag-keyword">kunjani villas what's included</span><span class="idea-tag tag-intent">Pre-Booking Research</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 04 OTA & LISTINGS ──────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">04 &mdash; OTA &amp; Brand Listing Consistency</div>
+    <p class="section-intro">Every online listing where the property name, address, phone number, or description appears must be identical and up to date. Inconsistent NAP (Name, Address, Phone) data across platforms is a known negative local SEO signal, and mismatched descriptions confuse both guests and search engines.</p>
+    <div class="platform-grid">
+
+      <div class="platform-card">
+        <div class="platform-name">Airbnb</div>
+        <div class="platform-url">airbnb.com</div>
+        <ul class="platform-actions">
+          <li>Update listing title to match the new SEO-optimised naming style</li>
+          <li>Sync description with on-site copy &mdash; same key benefits, same tone of voice</li>
+          <li>Refresh photos to match the visual quality of the website</li>
+          <li>Verify all amenities are checked and accurate</li>
+          <li>Ensure direct booking incentive is clearly visible in the listing</li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-name">Booking.com</div>
+        <div class="platform-url">booking.com</div>
+        <ul class="platform-actions">
+          <li>Confirm property name matches the website exactly</li>
+          <li>Update short description and facility details</li>
+          <li>Check address and map pin are accurate</li>
+          <li>Upload any new professional photography</li>
+          <li>Ensure the direct website rate is always cheaper than the OTA rate</li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-name">TripAdvisor</div>
+        <div class="platform-url">tripadvisor.com</div>
+        <ul class="platform-actions">
+          <li>Claim and verify the property listing if not already done</li>
+          <li>Update description and photos to current standards</li>
+          <li>Respond to all existing reviews &mdash; positive and negative</li>
+          <li>Add a booking link pointing to the direct website</li>
+          <li>Request recent guests to leave a review</li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-name">Wesgro / Stellenbosch Tourism</div>
+        <div class="platform-url">wesgro.co.za &middot; stellenboschtourism.co.za</div>
+        <ul class="platform-actions">
+          <li>Register or update the property on the official Wesgro tourism database</li>
+          <li>Submit to Stellenbosch Tourism for regional listing inclusion</li>
+          <li>Ensure website URL and contact details are correct</li>
+          <li><strong>High-authority local backlinks</strong> &mdash; valuable for local SEO rankings</li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-name">Google Hotels / Google Travel</div>
+        <div class="platform-url">google.com/travel</div>
+        <ul class="platform-actions">
+          <li>Connect a direct booking link via Google Hotel Center (free for direct bookings)</li>
+          <li>Ensure property appears in Google Maps accommodation results</li>
+          <li>Sync with Google Business Profile to improve Maps visibility</li>
+          <li>Add a competitive direct rate that undercuts OTA pricing</li>
+        </ul>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-name">SA Travel &amp; Wine Media</div>
+        <div class="platform-url">Editorial &amp; PR listings</div>
+        <ul class="platform-actions">
+          <li>Reach out to Getaway Magazine, Cond&eacute; Nast Traveller SA, and Wine &amp; Dine for editorial inclusion</li>
+          <li>Submit to Cape Winelands "best villas" round-ups and listicles</li>
+          <li>Request a <strong>backlink</strong> from any coverage &mdash; high-authority links boost organic rankings</li>
+          <li>Participate in SA Tourism content partnerships and regional campaigns</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 05 SOCIAL MEDIA ─────────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">05 &mdash; Social Media Activity</div>
+    <p class="section-intro">Social media does not directly affect Google rankings, but it drives referral traffic, builds brand awareness with potential guests, and provides a channel for amplifying blog content. For a luxury villa in a photogenic location, the visual platforms offer the best return.</p>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Instagram &mdash; Visual storytelling, 3&ndash;5 posts per week</div></div>
+        <div class="action-card-body">Instagram is the primary discovery platform for luxury accommodation. Post across three categories: <strong>property showcase</strong> (pools, interiors, vineyard views), <strong>experience content</strong> (wine tasting, sunset moments, food), and <strong>local area</strong> (wine farms, village scenes). Use Reels for behind-the-scenes content. Tag nearby wine estates for organic reach and co-marketing.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Encourage and reshare guest-generated content</div></div>
+        <div class="action-card-body">Set up a <strong>branded hashtag</strong> (e.g. <code>#KunjaniVillas</code>) and ask guests at check-in to use it if they post. Guest photos provide authentic social proof, cost nothing to produce, and consistently outperform polished brand photography in engagement. Reshare with permission and credit the original poster &mdash; guests appreciate being featured.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Facebook &mdash; Blog promotion and local event sharing</div></div>
+        <div class="action-card-body">Every new blog post should be shared as a Facebook post with a link and first-person teaser copy. Facebook's demographic skews towards the core booking audience for winelands villa stays (35&ndash;60). Share local event listings &mdash; harvest festivals, wine weekends &mdash; to position the page as a useful local resource, not just a sales channel.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Pinterest &mdash; Winelands inspiration boards</div></div>
+        <div class="action-card-body">Pinterest drives long-tail referral traffic for months or years after pinning. Create boards for: <strong>Cape Winelands Travel</strong>, <strong>Villa Interiors &amp; Design</strong>, <strong>Winelands Wedding Ideas</strong>, <strong>South African Wine</strong>. Pin every blog article and key villa page. Pinterest users are in active planning mode &mdash; high-intent, high-quality traffic.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-low">LOW</span><div class="action-card-title">Cross-promote with nearby wine estates and restaurants</div></div>
+        <div class="action-card-body">Build relationships with 3&ndash;5 neighbouring wine estates and restaurants for <strong>mutual social tagging and sharing</strong>. A post from Kunjani recommending a specific wine farm reaches their followers, and vice versa. This type of regional co-marketing costs nothing and builds both audiences simultaneously &mdash; a common strategy among Winelands hospitality brands.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 06 GOOGLE ADS ───────────────────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">06 &mdash; Google Ads: Driving Qualified Paid Traffic</div>
+    <p class="section-intro">While SEO builds long-term organic visibility, Google Ads delivers immediate, targeted traffic. For a villa property, three campaign types provide the strongest return: brand protection, generic accommodation search, and remarketing.</p>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Branded search campaign &mdash; protect the brand name</div></div>
+        <div class="action-card-body">Run a low-budget campaign targeting exact searches for <strong>"Kunjani Villas"</strong> and close variants. This prevents competitors or OTAs from appearing above the official website when potential guests search the property by name. Branded clicks are inexpensive (low competition) and convert at the highest rate of any keyword type &mdash; typically 5&ndash;10% vs 1&ndash;2% for generic terms.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Generic search campaign &mdash; winelands accommodation keywords</div></div>
+        <div class="action-card-body">Target high-intent terms: <strong>"cape winelands villa rental"</strong>, <strong>"private villa stellenbosch"</strong>, <strong>"luxury accommodation winelands"</strong>, <strong>"self-catering winelands"</strong>. Use responsive search ads with 5&ndash;8 headline variants. Target geographically: Cape Town metro, Johannesburg/Pretoria, and key international markets (UK, Germany, Netherlands, Australia). Suggested starting budget: ZAR 3,000&ndash;8,000/month.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Remarketing campaign &mdash; re-engage visitors who did not book</div></div>
+        <div class="action-card-body">Install the <strong>Google Ads remarketing pixel</strong> on the website. Create a Display remarketing audience of users who visited villa pages or the enquiry page but did not complete a booking. Show them targeted ads for 30 days after their visit. Remarketing audiences are 10&times; cheaper to advertise to and convert at 2&ndash;3&times; the rate of cold traffic &mdash; the highest-ROI paid channel for accommodation businesses.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 07 GOOGLE BUSINESS PROFILE ─────────────────────────────────────── -->
+  <section class="report-section">
+    <div class="section-header">07 &mdash; Google Business Profile</div>
+    <p class="section-intro">A fully optimised Google Business Profile is one of the most powerful free tools available for local businesses. It directly influences how the property appears in Google Maps, local search results, and increasingly in Google's AI Overviews &mdash; often appearing before the first organic result.</p>
+    <div class="action-grid">
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Claim and fully verify the GBP listing</div></div>
+        <div class="action-card-body">If not yet claimed: visit <strong>business.google.com</strong>, search for the property, and complete phone or postcard verification. Audit the listing: exact business name must match the website, physical address must be correct with the right map pin, primary category set to <strong>"Vacation Rental"</strong> or <strong>"Lodge"</strong>, secondary categories include "Wedding Venue" if applicable.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Upload 20+ professional photos across all categories</div></div>
+        <div class="action-card-body">GBP listings with 20+ photos receive significantly more clicks and direction requests. Upload photos across: <strong>Exterior</strong>, <strong>Interior</strong>, <strong>Rooms</strong>, <strong>Common Areas</strong> (pool, braai area), <strong>Food &amp; Drink</strong> (wine, catering). Use landscape-orientation photos and a high-quality cover photo that matches the website hero image for consistent branding.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-high">HIGH</span><div class="action-card-title">Respond to all Google reviews within 48 hours</div></div>
+        <div class="action-card-body">Review response rate is a direct ranking signal in Google Maps. Reply to <strong>every review</strong> &mdash; positive ones with a warm, personal response; negative ones with an empathetic, solution-focused reply. Responses show prospective guests how the business treats people. A thoughtful reply to a negative review often converts guests better than a listing with only perfect reviews and no engagement.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Add services, attributes, and proactive Q&amp;A content</div></div>
+        <div class="action-card-body">Under <em>Products/Services</em>, add: Villa Rental, Wine Tasting, Private Events, Corporate Retreat, Wedding Venue. Enable the <strong>booking link</strong> pointing to the direct website. In the <strong>Q&amp;A section</strong>, proactively post and answer 5&ndash;10 common questions (capacity, pet policy, pool access, Wi-Fi, nearest restaurants) to prevent incorrect user-submitted answers from appearing.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-medium">MEDIUM</span><div class="action-card-title">Post weekly GBP updates</div></div>
+        <div class="action-card-body">GBP Posts appear directly in search results and keep the listing looking active &mdash; a freshness signal factored into local ranking. Post weekly: <strong>seasonal availability</strong>, <strong>special offers</strong>, <strong>local events</strong> (Stellenbosch harvest festival, wine weekends), and <strong>links to new blog articles</strong>. Use a photo and a call-to-action button ("Book Now" or "Enquire") on every post.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-card-header"><span class="badge badge-low">LOW</span><div class="action-card-title">Sync GBP content with social media posts</div></div>
+        <div class="action-card-body">Repurpose Instagram and Facebook content as GBP posts &mdash; same photo, slightly adjusted caption. This creates a <strong>consistent brand presence</strong> across the three platforms guests most commonly check: website, social media, and Google Maps. Unified visual branding builds trust and memorability before a guest has even visited the property.</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════ FOOTER ══════ -->
+<footer class="footer">
+  Kunjani Villas & Wines &mdash; Post-SEO Action Plan generated 18 February 2026, 18:41<br>
+  <a href="https://kunjani-villas.co.za" target="_blank" rel="noopener noreferrer">kunjani-villas.co.za</a>
+  &nbsp;&middot;&nbsp; Powered by TMSA SEO Automation
+</footer>
+
+</body>
+</html>
