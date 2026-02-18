@@ -107,7 +107,8 @@
     .kpi.c-amber  { background: var(--amber); }
     .kpi.c-green  { background: var(--green); }
     .kpi.c-red    { background: #E05A4E; }
-    .kpi-icon { font-size: 20px; margin-bottom: 10px; opacity: 0.85; }
+    .kpi-icon { margin-bottom: 10px; opacity: 0.90; display: block; }
+    .kpi-icon svg { display: block; width: 28px; height: 28px; }
     .kpi-num {
       font-size: 38px; font-weight: 800; line-height: 1;
       margin-bottom: 6px; color: #fff;
@@ -309,7 +310,7 @@
         display: flex; flex-direction: column; justify-content: center;
       }
       .kpi-num { font-size: 1.7rem; }
-      .kpi-icon { font-size: 20px; }
+      .kpi-icon svg { width: 20px; height: 20px; stroke-width: 1.5px; }
 
       /* Wrap padding */
       .wrap { padding: 0 16px; }
@@ -412,27 +413,27 @@
 <!-- KPI CARDS -->
 <div class="kpi-grid">
   <div class="kpi c-blue">
-    <div class="kpi-icon">📄</div>
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
     <div class="kpi-num">23</div>
     <div class="kpi-label">Pages Indexed</div>
   </div>
   <div class="kpi c-purple">
-    <div class="kpi-icon">📝</div>
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
     <div class="kpi-num">0</div>
     <div class="kpi-label">Posts Indexed</div>
   </div>
   <div class="kpi c-amber">
-    <div class="kpi-icon">🗂</div>
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
     <div class="kpi-num">23</div>
     <div class="kpi-label">Total Items</div>
   </div>
   <div class="kpi c-green">
-    <div class="kpi-icon">✅</div>
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
     <div class="kpi-num">18</div>
     <div class="kpi-label">Titles Optimal</div>
   </div>
   <div class="kpi c-red">
-    <div class="kpi-icon">⚠️</div>
+    <div class="kpi-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
     <div class="kpi-num">0</div>
     <div class="kpi-label">Missing Descriptions</div>
   </div>
